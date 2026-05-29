@@ -1,0 +1,51 @@
+Options -Indexes
+ErrorDocument 404 /404.php
+
+# -----------------------------------------------------------------------------
+# Block direct access to sensitive files (config.php, db.php, *.example.php,
+# dotfiles, backups). FilesMatch is evaluated last and wins over PHP handlers.
+# -----------------------------------------------------------------------------
+<FilesMatch "^(config|db)\.php$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(example\.php|sql|sqlite|sqlite3|db|env|ini|log|bak|backup|swp|orig)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# -----------------------------------------------------------------------------
+# Block direct access to the entire config/ directory.
+# Belt-and-braces: a rewrite rule plus an Apache 2.2 / 2.4 compatible deny.
+# -----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^config(/|$) - [F,L]
+  RewriteRule ^includes/(db|functions)\.php$ - [F,L]
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Security response headers.
+# -----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # Avoid leaking server software / PHP version.
+  Header always unset X-Powered-By
+  Header always unset Server
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Prevent PHP from advertising its version in response headers.
+# -----------------------------------------------------------------------------
+<IfModule mod_php.c>
+  php_flag expose_php Off
+</IfModule>

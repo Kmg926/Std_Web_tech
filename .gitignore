@@ -1,0 +1,8 @@
+htdocs/config/config.php
+htdocs/setup.php
+htdocs/assets/img/covers/*.jpg
+htdocs/assets/img/covers/*.webp
+htdocs/assets/img/designs/*.jpg
+htdocs/assets/img/designs/*.webp
+.env
+*.log
