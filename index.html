@@ -29,7 +29,7 @@
         <div class="sidebar__recent">
           <p class="sidebar__section-label">최근 추가된 앨범</p>
           <ul id="sidebarAlbums" class="sidebar__list">
-            <li class="sidebar__list-item sidebar__list-item--loading">불러오는 중&hellip;</li>
+            <li class="sidebar__list-item text-muted">불러오는 중&hellip;</li>
           </ul>
         </div>
       </aside>
@@ -50,64 +50,88 @@
   <script>
     (async () => {
       const e = SLEEVE.escapeHTML;
+      const PH = 'assets/img/ui/placeholder.svg';
+      const onerr = `this.onerror=null;this.src='${PH}'`;
+
       const sidebarEl = document.getElementById('sidebarAlbums');
-      const feedEl = document.getElementById('feedPosts');
+      const feedEl    = document.getElementById('feedPosts');
 
       const albums = await SLEEVE.loadAlbums();
-
-      // created_at 내림차순 정렬 (문자열 "YYYY-MM-DD" 비교)
       const sorted = albums
         .slice()
         .sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)));
 
-      /* ---------- 사이드바: 최근 추가된 앨범 최대 5개 ---------- */
+      /* ---------- 사이드바: 최근 5개 ---------- */
       if (sorted.length) {
         sidebarEl.innerHTML = sorted.slice(0, 5).map((a) => `
           <li class="sidebar__list-item">
             <a href="album.html?id=${e(a.id)}" class="sidebar__album-link">
-              <img class="sidebar__thumb" data-src="${e(a.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${e(a.title)}" loading="lazy">
+              <img class="sidebar__thumb"
+                   src="${e(a.cover_path)}"
+                   alt="${e(a.title)}"
+                   onerror="${onerr}"
+                   loading="lazy">
               <span class="sidebar__album-info">
                 <span class="sidebar__album-title">${e(a.title)}</span>
                 <span class="sidebar__album-date">${e(SLEEVE.formatDate(a.created_at))}</span>
               </span>
             </a>
-          </li>
-        `).join('');
+          </li>`).join('');
       } else {
         sidebarEl.innerHTML = '<li class="sidebar__list-item text-muted">표시할 음반이 없습니다.</li>';
       }
 
-      /* ---------- 메인 피드: 전체 앨범 포스트 ---------- */
+      /* ---------- 메인 피드 ---------- */
       if (sorted.length) {
         feedEl.innerHTML = sorted.map((a) => {
-          // note excerpt: escape 후에 자른다 (엔티티가 중간에 잘리지 않도록 길이 기준은 원본 escape 결과)
-          let excerptHTML = '';
-          if (a.note && String(a.note).trim()) {
-            const safe = e(a.note);
-            const truncated = safe.length > 150 ? safe.slice(0, 150) + '&hellip;' : safe;
-            excerptHTML = `<p class="post__excerpt">${truncated}</p>`;
-          }
+          // 감상평 3줄 분량(~200자) 미리보기
+          const rawNote = a.note ? String(a.note).trim() : '';
+          const excerptHTML = rawNote
+            ? `<p class="post__excerpt">${e(rawNote)}</p>`
+            : '';
+
+          const limitedBadge = a.is_limited
+            ? '<span class="badge-limited">한정반</span>'
+            : '';
+
           return `
             <article class="post">
               <header class="post__header">
-                <h2 class="post__title"><a href="album.html?id=${e(a.id)}">${e(a.title)}</a></h2>
-                <p class="post__meta"><span>${e(a.genre)}</span> <span>${e(a.format)}</span> <span>${e(String(a.release_year))}</span></p>
+                <h2 class="post__title">
+                  <a href="album.html?id=${e(a.id)}">${e(a.title)}</a>
+                </h2>
+                <p class="post__meta">
+                  <span>${e(a.artist)}</span>
+                  <span>${e(String(a.release_year))}</span>
+                </p>
               </header>
-              <a href="album.html?id=${e(a.id)}" class="post__cover-link">
-                <img class="post__cover" data-src="${e(a.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${e(a.title)} 자켓" loading="lazy">
-              </a>
+
+              <div class="post__cover-wrap">
+                <img class="post__cover"
+                     src="${e(a.cover_path)}"
+                     alt="${e(a.title)} 자켓"
+                     onerror="${onerr}"
+                     loading="lazy">
+              </div>
+
               <div class="post__body">
                 ${excerptHTML}
-                <a href="album.html?id=${e(a.id)}" class="post__more">자세히 보기 &rarr;</a>
+                <div class="post__footer">
+                  <a href="album.html?id=${e(a.id)}" class="post__more" tabindex="0">
+                    자세히 보기
+                  </a>
+                  <div class="post__tags">
+                    <span class="tag">${e(a.genre)}</span>
+                    ${limitedBadge}
+                  </div>
+                </div>
               </div>
-            </article>
-          `;
+            </article>`;
         }).join('');
       } else {
         feedEl.innerHTML = '<div class="empty-state"><p>아직 기록된 음반이 없습니다.</p></div>';
       }
 
-      // 동적으로 추가된 이미지에 lazy load 재적용
       if (typeof window.initLazyLoad === 'function') window.initLazyLoad();
     })();
   </script>

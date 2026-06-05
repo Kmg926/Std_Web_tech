@@ -721,23 +721,17 @@
   color: var(--muted);
 }
 
-/* Feed (post cards) */
-.feed {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-10);
-}
-
-/* feedPosts 래퍼에 gap 적용 — articles가 feedPosts 안에 있으므로 */
+/* ============================ Feed (post cards) ============================ */
 #feedPosts {
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
+  gap: var(--space-7);
 }
 
 .post {
   position: relative;
-  width: 80%;
+  width: 100%;
+  max-width: 640px;
   margin: 0 auto;
   background-color: var(--bg-card);
   border: 1px solid rgba(var(--line-rgb), 0.1);
@@ -748,22 +742,22 @@
 }
 
 .post:hover {
-  border-color: rgba(var(--line-rgb), 0.35);
+  border-color: rgba(var(--amber-rgb, 217 138 61), 0.4);
   transform: translateY(-2px);
 }
 
 .post__header {
-  padding: var(--space-5) var(--space-6) 0;
+  padding: var(--space-5) var(--space-6) var(--space-3);
 }
 
 .post__title {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.3;
   margin-bottom: var(--space-2);
 }
 
-/* stretched-link: 제목 a를 카드 전체로 확장해 카드 전체 클릭 가능 */
+/* stretched-link: 제목 a가 카드 전체를 덮어 어디서든 클릭 가능 */
 .post__title a {
   color: var(--paper);
   transition: color var(--transition-base);
@@ -781,22 +775,19 @@
 
 .post__meta {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-2);
   color: var(--muted);
-  font-size: 0.82rem;
-  margin-bottom: var(--space-4);
+  font-size: 0.8rem;
 }
 
 .post__meta span + span::before {
   content: '·';
-  margin-right: var(--space-3);
+  margin-right: var(--space-2);
 }
 
-/* 커버 이미지: 이미지 링크 불필요(카드 전체 클릭), 패딩으로 띄움 */
-.post__cover-link {
-  display: block;
-  padding: var(--space-4) var(--space-6);
-  pointer-events: none;
+/* 커버 이미지 래퍼: 좌우 패딩으로 카드 벽에서 띄움 */
+.post__cover-wrap {
+  padding: var(--space-3) var(--space-5);
 }
 
 .post__cover {
@@ -809,25 +800,53 @@
 }
 
 .post__body {
-  padding: var(--space-5) var(--space-6) var(--space-6);
+  padding: var(--space-4) var(--space-6) var(--space-5);
 }
 
+/* 감상평 3줄 clamp */
 .post__excerpt {
   color: var(--cream);
-  line-height: 1.8;
+  font-size: 0.92rem;
+  line-height: 1.75;
   margin-bottom: var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* "자세히 보기"는 stretched-link 위로 올려 독립 클릭 가능하게 유지 */
+/* 하단 푸터: "자세히 보기" 버튼 + 태그/배지 */
+.post__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.post__tags {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+/* "자세히 보기" — 앰버 외곽선 버튼, 호버 시 채워짐 */
 .post__more {
   position: relative;
   z-index: 1;
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--amber);
+  border-radius: var(--radius-sm);
   color: var(--amber);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  transition: color var(--transition-base);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 .post__more:hover {
-  color: var(--amber-d);
+  background-color: var(--amber);
+  color: var(--ink);
 }
