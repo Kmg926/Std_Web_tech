@@ -775,14 +775,17 @@
 
 .post__cover-link {
   display: block;
+  padding: 0 var(--space-6);
 }
 
 .post__cover {
   width: 100%;
+  max-height: 320px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
   background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
 }
 
 .post__body {
