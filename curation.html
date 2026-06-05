@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>큐레이션 | SLEEVE</title>
+  <meta name="description" content="무드와 테마로 고르는 오늘의 한 장. SLEEVE의 음반 큐레이션.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-nav="curation">
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+
+    <section class="section">
+      <div class="container">
+
+        <!-- 페이지 헤더 -->
+        <header class="page-header">
+          <h1>큐레이션</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+          <p class="text-muted">무드와 테마로 고르는 오늘의 한 장.</p>
+        </header>
+
+        <!-- 큐레이션 그리드: curation.js 가 무드별 대표 카드를 렌더 -->
+        <div class="curation-grid" id="curationGrid"></div>
+
+        <!-- 빈 상태 -->
+        <p class="empty-state" id="curationEmpty" hidden>아직 큐레이션할 음반이 없습니다.</p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/curation.js"></script>
+</body>
+</html>

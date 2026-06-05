@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소개 | SLEEVE</title>
+  <meta name="description" content="SLEEVE는 LP·CD 수집과 자켓 디자인을 기록하고 전시하기 위한 개인 바이닐 아카이브입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+
+    <!-- 페이지 헤더 -->
+    <section class="section">
+      <div class="container">
+        <header class="page-header">
+          <h1>SLEEVE 소개</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+        </header>
+      </div>
+    </section>
+
+    <!-- 아카이브 소개 -->
+    <section class="section">
+      <div class="container">
+        <div class="about-intro">
+          <div class="about-intro__text">
+            <p>LP와 CD를 모으고, 직접 자켓을 디자인합니다. 좋아하는 음악을 기록하고 만든 것을 전시하기 위해 이 아카이브를 만들었습니다.</p>
+          </div>
+          <div class="about-intro__deco">
+            <div class="vinyl-ring" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 핵심 가치 -->
+    <section class="section">
+      <div class="container">
+        <div class="section__header">
+          <h2>핵심 가치</h2>
+        </div>
+        <div class="grid grid--3">
+
+          <article class="value-card">
+            <span class="value-card__mark" aria-hidden="true">&#9678;</span>
+            <h3 class="value-card__title">수집 &middot; Archive</h3>
+            <p class="value-card__desc">보유 음반을 자켓, 트랙리스트, 감상평과 함께 빠짐없이 기록합니다.</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-card__mark" aria-hidden="true">&#9671;</span>
+            <h3 class="value-card__title">창작 &middot; Portfolio</h3>
+            <p class="value-card__desc">직접 만든 자켓과 바이닐 디자인을 의도와 과정과 함께 전시합니다.</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-card__mark" aria-hidden="true">&#9633;</span>
+            <h3 class="value-card__title">공유 &middot; Curation</h3>
+            <p class="value-card__desc">무드별 추천과 입문 가이드로 바이닐 문화를 소개합니다.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 컬렉션 현황 -->
+    <section class="section">
+      <div class="container">
+        <div class="section__header">
+          <h2>컬렉션 현황</h2>
+        </div>
+        <div id="statsRow">
+          <p class="text-muted">불러오는 중&hellip;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 운영자 -->
+    <section class="section">
+      <div class="container">
+        <div class="section__header">
+          <h2>운영자</h2>
+        </div>
+        <div class="about-owner">
+          <p>SLEEVE는 한 사람이 모으고, 듣고, 만든 것을 정리해 두는 개인 아카이브입니다. 판매나 회원 기능 없이, 오직 기록과 전시를 위해 운영합니다.</p>
+          <p class="text-muted">표지 이미지의 저작권은 각 음반사 및 아티스트에게 있으며, 비상업적 아카이빙 목적으로만 사용합니다.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script>
+    (async () => {
+      const statsEl = document.getElementById('statsRow');
+      const albums = await SLEEVE.loadAlbums();
+
+      const vinyl = albums.filter((a) => a.format === 'Vinyl').length;
+      const cd = albums.filter((a) => a.format === 'CD').length;
+
+      statsEl.innerHTML = `
+        <div class="stats-summary">
+          <div class="stats-card">
+            <span class="stats-card__number">${albums.length}</span>
+            <span class="stats-card__label">총 음반</span>
+          </div>
+          <div class="stats-card">
+            <span class="stats-card__number">${vinyl}</span>
+            <span class="stats-card__label">LP</span>
+          </div>
+          <div class="stats-card">
+            <span class="stats-card__number">${cd}</span>
+            <span class="stats-card__label">CD</span>
+          </div>
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디자인 상세 | SLEEVE</title>
+  <meta name="description" content="SLEEVE 자켓 디자인 상세 — 제작 의도와 과정, 작업 이미지를 함께 봅니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+    <nav class="breadcrumb container" aria-label="breadcrumb">
+      <a href="index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="designs.html">디자인</a>
+      <span aria-hidden="true">›</span>
+      <span id="breadcrumbCurrent">...</span>
+    </nav>
+
+    <section class="section">
+      <div class="container" id="design-detail">
+        <div class="empty-state">불러오는 중...</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script>
+    (async () => {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      if (!id) { location.href = '404.html'; return; }
+
+      const designs = await SLEEVE.loadDesigns();
+      const design = designs.find((d) => d.id === id);
+      if (!design) { location.href = '404.html'; return; }
+
+      const e = SLEEVE.escapeHTML;
+
+      document.title = `${design.title} | SLEEVE`;
+      document.getElementById('breadcrumbCurrent').textContent = design.title;
+
+      const heroImg = (design.images && design.images.length)
+        ? design.images[0].image_path
+        : design.thumb_path;
+
+      const formatMonth = (s) => e(String(s).slice(0, 7).replace('-', '.'));
+
+      document.getElementById('design-detail').innerHTML = `
+        <div class="design-hero">
+          <img data-src="${e(heroImg)}" src="assets/img/ui/placeholder.svg"
+               alt="${e(design.title)}" loading="eager"
+               onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
+        </div>
+        <div class="design-meta">
+          <h1>${e(design.title)}</h1>
+          <div class="design-tools">
+            ${design.tools.map((t) => `<span class="tag">${e(t)}</span>`).join('')}
+          </div>
+          <p class="design-date">${formatMonth(design.created_at)}</p>
+        </div>
+        <div class="design-text">
+          <section>
+            <h2>제작 의도</h2>
+            <p>${e(design.intent).replace(/\n/g, '<br>')}</p>
+          </section>
+          <section>
+            <h2>제작 과정</h2>
+            <p>${e(design.process).replace(/\n/g, '<br>')}</p>
+          </section>
+        </div>
+        ${design.images && design.images.length > 1 ? `
+        <div class="design-gallery">
+          ${design.images.map((img) => `
+            <div class="design-gallery__item">
+              <img data-src="${e(img.image_path)}" src="assets/img/ui/placeholder.svg"
+                   alt="${e(design.title)} 이미지" loading="lazy"
+                   onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
+            </div>
+          `).join('')}
+        </div>` : ''}
+        <a href="designs.html" class="btn-outline">← 디자인 목록으로</a>
+      `;
+
+      if (window.initLazyLoad) initLazyLoad();
+    })();
+  </script>
+</body>
+</html>

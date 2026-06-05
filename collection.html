@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컬렉션 | SLEEVE</title>
+  <meta name="description" content="SLEEVE가 보유한 LP·CD 컬렉션. 장르·포맷·연도별로 필터링해 살펴보세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+
+    <section class="section">
+      <div class="container">
+
+        <!-- 페이지 헤더 -->
+        <header class="page-header">
+          <h1>컬렉션</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+          <p class="text-muted">보유 음반 아카이브 &mdash; 총 <span id="albumCount">0</span>장</p>
+        </header>
+
+        <!--
+          필터바: collection.js 가 각 .filter-group[data-filter-group] 안에
+          "전체" + 값별 .filter-pill 버튼을 동적으로 주입한다.
+          (장르/포맷/연도 — 그룹 내 단일 선택, 그룹 간 AND 교집합)
+        -->
+        <div class="filter-bar" id="filterBar">
+          <div class="filter-group">
+            <span class="filter-group__label" id="filterLabelGenre">장르</span>
+            <div class="filter-pills" data-filter-group="genre" role="group" aria-labelledby="filterLabelGenre"></div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-group__label" id="filterLabelFormat">포맷</span>
+            <div class="filter-pills" data-filter-group="format" role="group" aria-labelledby="filterLabelFormat"></div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-group__label" id="filterLabelYear">연도</span>
+            <div class="filter-pills" data-filter-group="year" role="group" aria-labelledby="filterLabelYear"></div>
+          </div>
+        </div>
+
+        <!-- 카드 그리드: collection.js 가 렌더 -->
+        <div class="grid" id="albumGrid"></div>
+        <p class="empty-state" id="filterEmpty" hidden>일치하는 결과가 없습니다.</p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/collection.js"></script>
+</body>
+</html>

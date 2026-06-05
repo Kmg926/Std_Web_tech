@@ -1,0 +1,43 @@
+[
+  {
+    "id": "midnight-static",
+    "title": "Midnight Static",
+    "tools": ["Photoshop", "Procreate", "Risograph"],
+    "thumb_path": "assets/img/designs/midnight-static.jpg",
+    "intent": "심야 라디오의 노이즈와 정적을 시각화한 자켓. 채널이 잡히지 않는 순간의 불안정한 아름다움을 앰버 톤의 잔상으로 담았다.",
+    "process": "Procreate로 거친 텍스처 스케치를 잡은 뒤 Photoshop에서 레이어를 합성하고, 최종 출력은 리소그래프 2도(앰버+블랙) 인쇄로 거친 망점 질감을 살렸다.",
+    "images": [
+      {"image_path": "assets/img/designs/midnight-static-01.jpg", "sort_order": 0},
+      {"image_path": "assets/img/designs/midnight-static-02.jpg", "sort_order": 1},
+      {"image_path": "assets/img/designs/midnight-static-03.jpg", "sort_order": 2}
+    ],
+    "created_at": "2024-03-10"
+  },
+  {
+    "id": "coastline-blueprint",
+    "title": "Coastline Blueprint",
+    "tools": ["Illustrator", "Figma"],
+    "thumb_path": "assets/img/designs/coastline-blueprint.jpg",
+    "intent": "해안선의 등고선과 설계도면을 결합해, 바다를 하나의 청사진처럼 읽어내려는 시도. 차갑고 정밀한 틸 톤으로 구성했다.",
+    "process": "Illustrator에서 벡터 등고선과 그리드 시스템을 구축하고, Figma에서 타이포그래피 레이아웃과 컬러 변형을 빠르게 시안화해 최종안을 확정했다.",
+    "images": [
+      {"image_path": "assets/img/designs/coastline-blueprint-01.jpg", "sort_order": 0},
+      {"image_path": "assets/img/designs/coastline-blueprint-02.jpg", "sort_order": 1}
+    ],
+    "created_at": "2024-04-02"
+  },
+  {
+    "id": "gridlocked",
+    "title": "Gridlocked",
+    "tools": ["Blender", "Photoshop"],
+    "thumb_path": "assets/img/designs/gridlocked.jpg",
+    "intent": "격자에 갇힌 도시의 밀도와 정체를 3D로 표현한 자켓. 반복되는 구조물 사이로 새어 나오는 빛이 유일한 출구처럼 작동한다.",
+    "process": "Blender로 모듈형 구조물을 배열해 라이팅과 카메라를 세팅하고, 렌더 결과를 Photoshop에서 색보정·그레인 추가로 후처리해 아날로그 질감을 입혔다.",
+    "images": [
+      {"image_path": "assets/img/designs/gridlocked-01.jpg", "sort_order": 0},
+      {"image_path": "assets/img/designs/gridlocked-02.jpg", "sort_order": 1},
+      {"image_path": "assets/img/designs/gridlocked-03.jpg", "sort_order": 2}
+    ],
+    "created_at": "2024-04-20"
+  }
+]

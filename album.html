@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>앨범 상세 | SLEEVE</title>
+  <meta name="description" content="SLEEVE 컬렉션의 앨범 상세 — 자켓, 트랙리스트, 감상평, 관련 음반.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+
+    <!-- 브레드크럼 (정적). 잘못된 ?id= 는 album.js 가 404.html 로 폴백. -->
+    <nav class="breadcrumb container" aria-label="breadcrumb">
+      <a href="index.html">홈</a>
+      <span aria-hidden="true">&rsaquo;</span>
+      <a href="collection.html">컬렉션</a>
+      <span aria-hidden="true">&rsaquo;</span>
+      <span aria-current="page">앨범 상세</span>
+    </nav>
+
+    <section class="section">
+      <div class="container">
+        <!--
+          album.js 가 ?id= 를 읽어 이 컨테이너를 innerHTML 로 채운다.
+          (커버 / 메타 / 무드 / 트랙리스트 / 감상평 / 관련 음반 모두 포함)
+        -->
+        <div id="album-detail">
+          <p class="empty-state">불러오는 중&hellip;</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/album.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Typography */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+}
+
+h3,
+h4 {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--paper);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  line-height: 1.7;
+}
+
+p + p {
+  margin-top: var(--space-3);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-inline: var(--space-7);
+  }
+}
+
+.section {
+  padding-block: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-9);
+  }
+}
+
+.section__title {
+  margin-bottom: var(--space-6);
+}
+
+/* Utilities */
+.text-amber {
+  color: var(--amber);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom scrollbar (dark theme) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--amber-d) var(--bg-card);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--amber-d);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--bg-card);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--amber);
+}

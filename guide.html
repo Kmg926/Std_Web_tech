@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가이드 | SLEEVE</title>
+  <meta name="description" content="바이닐 입문·관리·장비·문화 가이드. 처음 시작하는 사람을 위한 안내서.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-nav="guide">
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+
+    <section class="section">
+      <div class="container">
+
+        <!-- 페이지 헤더 -->
+        <header class="page-header">
+          <h1>바이닐 가이드</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+          <p class="text-muted">입문부터 관리까지 &mdash; 항목을 눌러 펼쳐 보세요.</p>
+        </header>
+
+        <!-- 카테고리 필터: guide.js 가 버튼을 동적 주입 -->
+        <div class="filter-bar" id="guideFilter" role="group" aria-label="가이드 카테고리"></div>
+
+        <!-- 가이드 목록(아코디언): guide.js 가 렌더 -->
+        <ul class="guide-list" id="guideList" role="list"></ul>
+
+        <!-- 빈 상태 -->
+        <p class="empty-state" id="guideEmpty" hidden>해당 카테고리의 가이드가 없습니다.</p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/guide.js"></script>
+</body>
+</html>

@@ -7,76 +7,113 @@ EX) Feat(fe): Login Modal
 GH cli 깔려있음
 
 ## Tech Stack
-Frontend: HTML, CSS, JS
-Backend: PHP
-Hosting: infinityfree
-DB: MySQL
+Frontend: HTML, CSS, Vanilla JS (프레임워크·빌드 도구 없음)
+Backend: 없음 (순수 정적 사이트)
+Data: 정적 JSON/JS 데이터 파일 (DB 없음)
+Hosting: 미정 — 일단 호스팅은 보류하고 빌딩에 집중 (배포는 추후 정적 호스팅 GitHub Pages/Netlify 등으로 확장 가능)
+
+> 방침 변경 메모: 기존 PHP+MySQL+InfinityFree 동적 구성에서 **순수 정적 사이트로 전환**했다.
+> 이유 — 1차 목표는 안정적 완성. 정적은 리소스가 적고 서버·DB에서 막힐 지점이 없어 빌딩에만 집중 가능.
+> SLEEVE의 기획 기능(목록·상세·필터·갤러리·큐레이션·통계)은 전부 정적으로 구현 가능하다(방문자 글쓰기·로그인·결제가 없으므로).
+> DB(MySQL) 연동은 "여건 되면 시도할 2차 확장"으로 남겨둔다.
 
 ## Project 개요
 이름 / 한 줄 소개
 SLEEVE — 내가 모은 LP·CD와 직접 만든 자켓 디자인을 한곳에 기록·전시하는 개인 바이닐 아카이브 + 포트폴리오 사이트.
+
 성격
-PHP가 MySQL 데이터를 읽어 페이지를 렌더링하는 동적 멀티페이지 사이트. 판매·회원·로그인·문의 기능 없음. 목적은 "전시와 기록". (대학 "표준웹테크놀러지" 기말 프로젝트 / 부트스트랩 카드 그리드형 템플릿을 SLEEVE 톤으로 변형 / 최소 10페이지 이상)
+JS가 정적 데이터(JSON)를 읽어 페이지를 렌더링하는 **정적 멀티페이지 사이트**. 판매·회원·로그인·문의(폼 전송) 기능 없음. 목적은 "전시와 기록". (대학 "표준웹테크놀러지" 기말 프로젝트 / HTML5 UP 'Future Imperfect'형 사이드바+피드 레이아웃을 SLEEVE 톤으로 변형 / 최소 10페이지 이상)
+
 핵심 가치
+- 수집(Archive): 보유 음반을 자켓·트랙리스트·감상평과 함께 기록
+- 창작(Portfolio): 직접 만든 자켓/바이닐 디자인을 의도·과정과 함께 전시
+- 공유(Curation): 무드·테마별 추천과 입문 가이드로 바이닐 문화 소개
 
-수집(Archive): 보유 음반을 자켓·트랙리스트·감상평과 함께 기록
-창작(Portfolio): 직접 만든 자켓/바이닐 디자인을 의도·과정과 함께 전시
-공유(Curation): 무드·테마별 추천과 입문 가이드로 바이닐 문화 소개
+## 페이지 구성 (발표안과 1:1 일치 — 최우선 원칙)
+이 사이트는 1차 발표안(20251538김민건_SLEEVE.pdf)을 그대로 구현하는 것이 목표다. 발표안의 페이지·레이아웃·톤을 기준으로 삼고 임의로 바꾸지 않는다.
 
-페이지 구성 (총 10 — 10페이지 요건 충족)
+발표안 페이지 목록(11개) ↔ 빌드 파일 매핑:
+- 01 메인 → index.html
+- 02 소개 → about.html
+- 03 컬렉션 목록 → collection.html
+- 04 앨범 상세 ① / 05 앨범 상세 ② → album.html?id=<slug> (단일 템플릿이 여러 앨범을 렌더. 발표안의 ①②는 같은 템플릿의 서로 다른 데이터)
+- 06 자켓 디자인 갤러리 → designs.html
+- 07 디자인 상세 → design.html?id=<slug>
+- 08 테마 큐레이션 → curation.html
+- 09 바이닐 가이드 → guide.html
+- 10 컬렉션 통계 → stats.html
+- 11 문의 → contact.html (이메일·SNS·FAQ, 폼 전송 없음)
 
-index.php — 메인 (Hero + 하이라이트 카드)
-about.php — 소개 (아카이브 취지·운영자)
-collection.php — 컬렉션 목록 (장르·포맷·연도 필터 + 카드 그리드)
-album.php?id= — 앨범 상세 (자켓·트랙리스트·감상평·관련 음반)
-designs.php — 자켓 디자인 갤러리
-design.php?id= — 디자인 상세 (이미지·제작 의도·과정)
-curation.php — 테마/무드 큐레이션 ("오늘의 한 장")
-guide.php — 바이닐 가이드 (게시판형)
-stats.php — 컬렉션 통계 (장르·연도·포맷 차트)
-404.php — 없는 라우트·잘못된 id 처리
+모든 페이지는 .html. 상세 페이지는 개별 파일을 만들지 않고 **단일 템플릿 + 쿼리스트링(?id=) + JS 렌더** 방식.
 
-데이터 모델 (MySQL, utf8mb4)
+- index.html — 메인. 발표안 와이어프레임대로 헤더 + 왼쪽 사이드바(아카이브 한 줄 소개 + '최근 추가된 앨범' 미니 리스트) + 메인 피드(앨범·큐레이션 글 카드 → 상세로 연결) + 푸터. (히어로 배너형 아님 — Future Imperfect의 사이드바+피드 레이아웃)
+- about.html — 소개 (아카이브 취지·운영자)
+- collection.html — 컬렉션 목록 (장르·포맷·연도 필터 + 카드 그리드, JS 클라이언트 필터)
+- album.html?id=<slug> — 앨범 상세 (자켓·트랙리스트·감상평·관련 음반). JS가 ?id= 를 읽어 albums 데이터에서 해당 항목 렌더
+- designs.html — 자켓 디자인 갤러리
+- design.html?id=<slug> — 디자인 상세 (이미지·제작 의도·과정). JS가 ?id= 로 designs 데이터 렌더
+- curation.html — 테마/무드 큐레이션 ("오늘의 한 장")
+- guide.html — 바이닐 가이드 (게시판형 목록 + 글 상세는 ?id= 또는 펼침)
+- stats.html — 컬렉션 통계 (장르·연도·포맷 차트, Chart.js)
+- contact.html — 문의 (이메일 mailto 링크 + SNS 링크 + 자주 묻는 질문 FAQ). 정적이므로 폼 전송 없음, 정보 안내·링크 중심
 
-albums(id, slug, title, artist, release_year, format[Vinyl|CD], genre, cover_path, note, is_limited, created_at)
-tracks(id, album_id→albums, position, title)
-album_moods(album_id→albums, mood)  — 큐레이션 분류
-designs(id, slug, title, tools, thumb_path, intent, process, created_at)
-design_images(id, design_id→designs, image_path, sort_order)
-guide_posts(id, slug, title, category, body, created_at)
+> 참고: 별도 404.html 파일은 만들지 않는다. 잘못된 ?id= 는 해당 상세 페이지(album.html/design.html) 안에서 JS가 "해당 항목을 찾을 수 없음" 빈 상태 UI + 목록으로 돌아가는 링크로 안전 처리한다(인페이지 폴백).
 
-디자인 방향
+## 데이터 모델 (정적 JSON — 원래 DB 테이블을 1:1로 대체)
+DB 테이블 한 줄(레코드) = JSON 객체 한 개. assets/data/ 아래에 둔다.
+나중에 MySQL로 확장할 때 그대로 매핑되도록 컬럼명을 보존한다.
 
-톤: 다크 배경 + 앰버 포인트의 아날로그 감성, 자켓 이미지가 주인공
-토큰(:root): --ink:#1C1714 / --paper:#F7F3EC / --cream:#F2E9DA / --amber:#D98A3D / --amber-d:#B36C28 / --teal:#5C8374 / --muted:#8A7D6E / --line:#E2D8C8
-폰트: 헤드라인 세리프(Playfair Display/Lora) + 본문 Inter + 한글 Noto Sans KR
-자켓 카드는 정사각(1:1), 한정반은 앰버 배지, LP판(동심원) 모티프를 포인트로
-반응형 필수(360 / 768 / 1200px), 공통 영역(navbar·footer)은 includes로 분리
+- assets/data/albums.json — [{ id(slug), title, artist, release_year, format("Vinyl"|"CD"), genre, cover_path, note(감상평), is_limited(bool), moods:[], tracks:[{position, title}], created_at }]
+  (원래 albums + tracks + album_moods 테이블을 앨범 객체 안에 중첩으로 합침)
+- assets/data/designs.json — [{ id(slug), title, tools, thumb_path, intent, process, images:[{image_path, sort_order}], created_at }]
+  (원래 designs + design_images 합침)
+- assets/data/guide.json — [{ id(slug), title, category, body, created_at }]
+- assets/data/faq.json — [{ q, a }]  (contact.html 자주 묻는 질문)
 
-InfinityFree 제약 (설계 시 반드시 반영)
+로딩 방식: 각 페이지 JS가 fetch('assets/data/xxx.json') 로 읽어 렌더.
+(파일을 file:// 로 직접 열면 fetch가 막힐 수 있으니, 개발 중엔 로컬 정적 서버(예: `python -m http.server`)로 확인. 데이터를 .js의 전역 변수로 두는 폴백도 허용.)
 
-서버에 SSH/Composer 없음 → 프레임워크·의존성 추가 금지(바닐라 PHP/PDO)
-open_basedir로 htdocs 밖 접근 불가 → 설정 포함 모든 파일을 htdocs 안에 둔다
-MySQL 뷰·스토어드 프로시저·트리거 금지 → 일반 테이블 + 쿼리(집계는 GROUP BY)
-배포는 FTP 단방향(서버→GitHub 동기화 X) → 서버 파일 직접 수정 금지, GitHub이 단일 소스
-이미지 최적화(자켓 WebP/JPG, 가급적 ≤200KB), 운영 display_errors=Off
+## 디자인 방향
+- 톤: 다크 배경 + 앰버 포인트의 아날로그 감성, 자켓 이미지가 주인공
+- 토큰(:root): --ink:#1C1714 / --paper:#F7F3EC / --cream:#F2E9DA / --amber:#D98A3D / --amber-d:#B36C28 / --teal:#5C8374 / --muted:#8A7D6E / --line:#E2D8C8
+- 폰트: 헤드라인 세리프(Playfair Display/Lora) + 본문 Inter + 한글 Noto Sans KR
+- 자켓 카드는 정사각(1:1), 한정반은 앰버 배지, LP판(동심원) 모티프를 포인트로
+- 반응형 필수(360 / 768 / 1200px)
+- 공통 영역(navbar·footer)은 JS 컴포넌트로 분리: includes/navbar.html·footer.html 을 fetch 해 주입하거나, components.js 안의 함수가 동일 마크업을 각 페이지에 삽입. (PHP include 대체)
 
-디렉터리 (요약)
-htdocs/ 가 웹 루트이자 FTP 업로드 대상. 페이지 .php + includes/(db,header,footer,functions) + config/(config.php는 gitignore) + assets/(css,js,img). 그 밖에 sql/(schema,seed), .github/workflows/deploy.yml, .claude/(settings,agents).
-코딩·보안 원칙
+## 정적 사이트 제약 / 원칙 (설계 시 반드시 반영)
+- 서버·DB·서버사이드 코드 없음 → 모든 동작은 브라우저 JS로. 빌드 도구·프레임워크·번들러 금지(바닐라 HTML/CSS/JS).
+- 외부 라이브러리는 CDN 또는 vendor 폴더로 최소화. 차트는 Chart.js(CDN) 1개만 허용.
+- 검색·필터는 클라이언트 사이드(이미 로드한 JSON을 JS로 거르기). 서버 쿼리 없음.
+- 상태/데이터 변경은 코드(JSON) 수정 → 커밋 → 재배포. 런타임 쓰기 없음(localStorage 등 영구저장 미사용).
+- 이미지 최적화(자켓 WebP/JPG, 가급적 ≤200KB), 모든 <img>에 alt, lazy-loading 적용.
+- 깨진 링크·잘못된 ?id= 는 JS가 안전하게 404 안내로 폴백.
 
-모든 쿼리 PDO 프리페어드, 모든 출력 htmlspecialchars, 모든 입력 검증
-DB 접속정보 config/config.php 분리(커밋 금지) + .htaccess로 직접 접근 차단
+## 디렉터리 (요약)
+프로젝트 루트가 곧 웹 루트. 별도 htdocs 불필요.
+- *.html (위 페이지들)
+- assets/css/ (tokens.css, base.css, components.css, pages.css 등)
+- assets/js/ (components.js[navbar/footer 주입·공통], data.js 또는 페이지별 스크립트, collection.js[필터], album.js[?id 렌더], stats.js[차트] 등)
+- assets/data/ (albums.json, designs.json, guide.json)
+- assets/img/ (covers/, designs/, ui/)
+- includes/ (navbar.html, footer.html — fetch 주입용. components.js 방식으로 대체 가능)
+- .claude/ (settings, agents)
+- (배포 보류) 정적 호스팅 도입 시 .github/workflows/ 에 정적 배포 워크플로 추가
 
-서브에이전트 역할
+## 코딩·보안 원칙 (정적 기준)
+- 데이터→DOM 출력 시 textContent 사용 또는 이스케이프 헬퍼로 XSS 방지(innerHTML에 원본 문자열 직접 삽입 금지).
+- JSON 로드 실패·빈 결과·잘못된 id에 대한 방어 처리(빈 상태 UI, 404 폴백).
+- 시맨틱 HTML, 접근성(대비·alt·키보드 포커스), 반응형 우선.
+- 민감정보 없음(서버·DB 접속정보 자체가 없음). 따라서 config/비밀키 관리 항목은 해당 없음.
 
-frontend-senior-dev (opus): HTML/CSS/JS/Bootstrap, 공통 레이아웃, 컴포넌트, 반응형, 차트 UI
-php-backend-senior (opus): ※ nodejs-backend-senior에서 교체. PHP/PDO, DB 접근, 페이지 컨트롤러, 필터·집계
-security-manager (opus): 프리페어드·XSS 검토, 입력 검증, config/.htaccess 보호
-qa-tester (sonnet): 반응형·링크·alt·대비 감사, 페이지별 수동 테스트
-cicd-manager (sonnet): GitHub Actions(php -l 린트 후 FTP로 htdocs 자동 배포)
+## 서브에이전트 역할 (정적 기준으로 재편)
+- frontend-senior-dev (opus): HTML/CSS/JS, 공통 레이아웃(navbar/footer 주입), 컴포넌트, 반응형, 차트 UI, 카드 그리드
+- data-and-render (opus): ※ 기존 php-backend-senior를 대체. 정적 데이터 모델(albums/designs/guide JSON) 설계, fetch 로딩, ?id= 라우팅 렌더, 클라이언트 필터·집계(통계) 로직
+- security-manager (opus): XSS(이스케이프) 검토, 입력/URL 파라미터 검증, 안전한 DOM 주입, 외부 CDN 무결성(SRI) 점검
+- qa-tester (sonnet): 반응형(360/768/1200)·링크·alt·대비 감사, ?id= 정상/오류 케이스, 빈 데이터 케이스 수동 테스트
+- cicd-manager (sonnet): (배포 보류 상태) GitHub Actions로 HTML/JS 린트·링크 체크 중심. 정적 호스팅 도입 시 정적 배포 워크플로 추가
 
-레퍼런스
-
-Discogs (discogs.com) — 릴리스 상세 정보 구조, 장르/포맷/연도 필터
-김밥레코즈 (gimbabrecords.com) — 카드형 그리드, 음반별 큐레이션 글, 한정반 배지
+## 레퍼런스
+- Discogs (discogs.com) — 릴리스 상세 정보 구조, 장르/포맷/연도 필터
+- 김밥레코즈 (gimbabrecords.com) — 카드형 그리드, 음반별 큐레이션 글, 한정반 배지
+- 서울바이닐 (seoulvinyl.com) — 카테고리 탭 네비, 정사각 자켓 그리드 (컬렉션 필터·그리드 참고용)

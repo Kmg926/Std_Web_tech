@@ -1,0 +1,568 @@
+/* ============================ Section header ============================ */
+/* 섹션 제목 + "전체 보기 →" 링크를 양 끝 정렬 */
+.section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.section__link {
+  color: var(--amber);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.section__link:hover {
+  color: var(--amber-d);
+}
+
+/* ============================ Hero ring ============================ */
+/* 히어로 안에서 중앙 정렬되는 LP 데코 (인라인 스타일 대체) */
+.hero__ring {
+  margin: 0 auto var(--space-6);
+}
+
+/* ============================ Value cards ============================ */
+/* index/about 공용 — 수집·창작·공유 가치 카드 */
+.value-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background-color: var(--bg-card);
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.value-card__mark {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--amber);
+}
+
+.value-card__title {
+  font-family: var(--font-sub);
+  font-weight: 600;
+}
+
+.value-card__desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ============================ About page ============================ */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.page-header__divider {
+  display: block;
+  width: var(--space-9);
+  height: 3px;
+  background-color: var(--amber);
+  border-radius: var(--radius-pill);
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-intro {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.about-intro__text {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--cream);
+}
+
+.about-intro__deco {
+  display: flex;
+  justify-content: center;
+}
+
+.about-owner {
+  max-width: 60ch;
+}
+
+.about-owner p + p {
+  margin-top: var(--space-4);
+}
+
+/* ============================ Album detail ============================ */
+.album-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .album-detail {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+
+.album-detail__cover {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.album-detail__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-detail__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.album-detail__artist {
+  color: var(--amber);
+  font-size: 1.1rem;
+}
+
+.album-detail__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block: var(--space-2);
+}
+
+.album-detail__note {
+  color: var(--cream);
+  line-height: 1.8;
+  border-left: 2px solid var(--amber);
+  padding-left: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+/* ============================ Tracklist ============================ */
+.tracklist {
+  margin-top: var(--space-5);
+  border-top: 1px solid rgba(var(--line-rgb), 0.1);
+}
+
+.tracklist__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(var(--line-rgb), 0.08);
+}
+
+.tracklist__num {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  min-width: 1.8rem;
+}
+
+.tracklist__title {
+  color: var(--paper);
+}
+
+/* ============================ Design detail ============================ */
+.design-hero {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+}
+
+.design-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.design-meta {
+  margin-bottom: var(--space-6);
+}
+
+.design-meta h1 {
+  margin-bottom: var(--space-3);
+}
+
+.design-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.design-date {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
+/* 본문: 가독성을 위해 줄 길이 제한 */
+.design-text {
+  max-width: 70ch;
+  margin-bottom: var(--space-8);
+}
+
+.design-text section + section {
+  margin-top: var(--space-6);
+}
+
+.design-text h2 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-3);
+}
+
+.design-text p {
+  color: var(--paper);
+  line-height: 1.8;
+}
+
+/* 갤러리와 본문 사이 여백 확보 */
+.design-text + .design-gallery {
+  margin-bottom: var(--space-8);
+}
+
+.design-gallery + .btn-outline,
+.design-text + .btn-outline {
+  margin-top: var(--space-4);
+}
+
+/* ============================ Design gallery ============================ */
+.design-gallery {
+  column-count: 1;
+  column-gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .design-gallery {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .design-gallery {
+    column-count: 3;
+  }
+}
+
+.design-gallery__item {
+  break-inside: avoid;
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.design-gallery__item img {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+/* ============================ Stats ============================ */
+.stats-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .stats-summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stats-card {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.stats-card__number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.stats-card__label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: var(--space-2);
+}
+
+.chart-container {
+  position: relative;
+  height: 250px;
+  background-color: var(--bg-card);
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+/* ============================ Guide list ============================ */
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.guide-list__item {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-base);
+}
+
+.guide-list__item:hover {
+  border-color: var(--amber);
+}
+
+/* 아코디언 토글 버튼 — 제목/배지/날짜를 한 줄에 배치 */
+.guide-list__toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.guide-list__toggle:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: -2px;
+}
+
+.guide-list__title {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  color: var(--paper);
+  flex: 1 1 auto;
+}
+
+.guide-list__date {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 펼쳐지는 본문 영역 */
+.guide-list__body {
+  padding: 0 var(--space-5) var(--space-5);
+  color: var(--cream);
+  line-height: 1.75;
+}
+
+.guide-list__body p {
+  margin: 0;
+}
+
+/* 열림 상태 표시 — 토글의 aria-expanded 로 캐럿 회전 */
+.guide-list__toggle::after {
+  content: '\203A'; /* › */
+  color: var(--amber);
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform var(--transition-base);
+}
+
+.guide-list__toggle[aria-expanded='true']::after {
+  transform: rotate(90deg);
+}
+
+/* ============================ Curation ============================ */
+.curation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .curation-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .curation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.curation-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.curation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.curation-card__body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.curation-card__mood {
+  font-family: var(--font-sub);
+  font-size: 1.25rem;
+  color: var(--amber);
+}
+
+.curation-card__desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* ============================ Album (album.js 출력 클래스) ============================ */
+.album {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .album {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+}
+
+.album__cover {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.album__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.album__artist {
+  color: var(--amber);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.album__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--paper);
+}
+
+.album__meta {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.album__meta-label {
+  color: var(--line);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: var(--space-1);
+}
+
+.album__moods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.album__section-title {
+  font-family: var(--font-sub);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.album__note {
+  border-left: 2px solid var(--amber);
+  padding-left: var(--space-4);
+  color: var(--cream);
+  line-height: 1.8;
+}
+
+.album__tracks,
+.album__related {
+  grid-column: 1 / -1;
+}
+
+.tracklist__pos {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  min-width: 1.8rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+

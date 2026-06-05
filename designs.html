@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자켓 디자인 | SLEEVE</title>
+  <meta name="description" content="SLEEVE가 직접 제작한 자켓·바이닐 디자인 포트폴리오. 제작 의도와 과정을 함께 기록합니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+    <section class="section">
+      <div class="container">
+        <header class="page-header">
+          <h1>자켓 디자인</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+        </header>
+        <p class="text-muted">직접 제작한 자켓·바이닐 디자인 포트폴리오</p>
+
+        <div class="grid grid--3" id="designGrid"></div>
+        <p class="empty-state" id="designEmpty" hidden>등록된 디자인이 없습니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script>
+    (async () => {
+      const designs = await SLEEVE.loadDesigns();
+      const e = SLEEVE.escapeHTML;
+      const grid = document.getElementById('designGrid');
+      const empty = document.getElementById('designEmpty');
+
+      if (!designs.length) { empty.hidden = false; return; }
+
+      grid.innerHTML = designs.map((d) => `
+        <a class="card" href="design.html?id=${e(d.id)}">
+          <div class="card__cover">
+            <img data-src="${e(d.thumb_path)}" src="assets/img/ui/placeholder.svg"
+                 alt="${e(d.title)} 디자인 썸네일" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">${e(d.title)}</h3>
+            <p class="card__meta">${e(d.tools.join(', '))}</p>
+            <p class="card__meta">${e(d.created_at.slice(0, 7).replace('-', '.'))}</p>
+          </div>
+        </a>
+      `).join('');
+
+      if (window.initLazyLoad) initLazyLoad();
+    })();
+  </script>
+</body>
+</html>

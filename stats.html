@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>통계 | SLEEVE</title>
+  <meta name="description" content="수집한 음반의 포맷·장르·연도별 분포를 한눈에 보는 컬렉션 통계.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-nav="stats">
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+    <section class="section">
+      <div class="container">
+
+        <header class="page-header">
+          <h1>컬렉션 통계</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+          <p class="text-muted">수집한 음반의 분포를 한눈에.</p>
+        </header>
+
+        <!-- 요약 카드: stats.js 가 숫자 채움 -->
+        <div class="stats-summary">
+          <div class="stats-card">
+            <p class="stats-card__number" id="statTotal">&mdash;</p>
+            <p class="stats-card__label">총 보유</p>
+          </div>
+          <div class="stats-card">
+            <p class="stats-card__number" id="statVinyl">&mdash;</p>
+            <p class="stats-card__label">바이닐</p>
+          </div>
+          <div class="stats-card">
+            <p class="stats-card__number" id="statCD">&mdash;</p>
+            <p class="stats-card__label">CD</p>
+          </div>
+        </div>
+
+        <!-- 장르별 분포 -->
+        <div class="section__header">
+          <h2>장르별 분포</h2>
+        </div>
+        <div class="chart-container">
+          <canvas id="genreChart" aria-label="장르별 음반 수 차트" role="img"></canvas>
+        </div>
+
+        <!-- 연도별 발매 -->
+        <div class="section__header" style="margin-top: var(--space-8);">
+          <h2>연도별 발매</h2>
+        </div>
+        <div class="chart-container">
+          <canvas id="yearChart" aria-label="연도별 음반 수 차트" role="img"></canvas>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/stats.js"></script>
+</body>
+</html>
