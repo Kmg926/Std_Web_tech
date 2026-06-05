@@ -619,16 +619,19 @@
 
 
 /* ============================ Main layout (index.html) ============================ */
+/* base.css의 .container 는 건드리지 않고, index 메인 레이아웃 폭을 여기서 확장 */
 .main-layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-7);
-  padding: var(--space-7) 0;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5);
 }
 
 @media (min-width: 1200px) {
   .main-layout {
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 340px 1fr;
     align-items: start;
   }
 }
@@ -640,27 +643,33 @@
 }
 
 .sidebar__intro {
+  padding: var(--space-6) 0 var(--space-5);
+  border-bottom: 2px solid var(--amber);
   margin-bottom: var(--space-5);
 }
 
 .sidebar__site-name {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 700;
   color: var(--amber);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: var(--space-2);
 }
 
 .sidebar__tagline {
   color: var(--muted);
-  font-size: 0.85rem;
-  margin-top: var(--space-1);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-3);
 }
 
-.sidebar__divider {
-  border: none;
-  border-top: 1px solid rgba(var(--line-rgb), 0.15);
-  margin: var(--space-5) 0;
+.sidebar__desc {
+  color: var(--cream);
+  font-size: 0.88rem;
+  line-height: 1.6;
 }
 
 .sidebar__section-label {
@@ -676,7 +685,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .sidebar__album-link {
@@ -692,8 +701,8 @@
 }
 
 .sidebar__thumb {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   object-fit: cover;
   border-radius: var(--radius-sm);
   flex-shrink: 0;
@@ -716,9 +725,41 @@
   transition: color var(--transition-base);
 }
 
-.sidebar__album-date {
+.sidebar__album-artist {
   font-size: 0.75rem;
   color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__album-meta {
+  font-size: 0.72rem;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.sidebar__limited-dot {
+  color: var(--amber);
+  font-size: 0.7rem;
+}
+
+/* Sidebar CTA */
+.sidebar__cta {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(var(--line-rgb), 0.1);
+}
+
+.sidebar__cta-link {
+  color: var(--amber);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color var(--transition-base);
+}
+
+.sidebar__cta-link:hover {
+  color: var(--amber-d);
 }
 
 /* ============================ Feed (post cards) ============================ */
@@ -747,7 +788,7 @@
 }
 
 .post__header {
-  padding: var(--space-5) var(--space-6) var(--space-3);
+  padding: var(--space-4) var(--space-6) var(--space-2);
 }
 
 .post__title {
@@ -785,9 +826,10 @@
   margin-right: var(--space-2);
 }
 
-/* 커버 이미지 래퍼: 좌우 패딩으로 카드 벽에서 띄움 */
+/* 커버 이미지 래퍼: 좌우 패딩으로 카드 벽에서 띄우고, 폭을 제한해 한 화면에 카드 여러 개 노출 */
 .post__cover-wrap {
-  padding: var(--space-3) var(--space-5);
+  max-width: 460px;
+  padding: var(--space-2) var(--space-5);
 }
 
 .post__cover {
@@ -800,7 +842,7 @@
 }
 
 .post__body {
-  padding: var(--space-4) var(--space-6) var(--space-5);
+  padding: var(--space-3) var(--space-6) var(--space-4);
 }
 
 /* 감상평 3줄 clamp */
@@ -808,6 +850,7 @@
   color: var(--cream);
   font-size: 0.92rem;
   line-height: 1.75;
+  max-width: 60ch;
   margin-bottom: var(--space-4);
   display: -webkit-box;
   -webkit-line-clamp: 3;

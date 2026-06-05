@@ -24,13 +24,16 @@
         <div class="sidebar__intro">
           <p class="sidebar__site-name">SLEEVE</p>
           <p class="sidebar__tagline">바이닐 아카이브</p>
+          <p class="sidebar__desc">내가 모은 LP·CD와 직접 만든 자켓을 기록하는 공간.</p>
         </div>
-        <hr class="sidebar__divider">
         <div class="sidebar__recent">
           <p class="sidebar__section-label">최근 추가된 앨범</p>
           <ul id="sidebarAlbums" class="sidebar__list">
             <li class="sidebar__list-item text-muted">불러오는 중&hellip;</li>
           </ul>
+        </div>
+        <div class="sidebar__cta">
+          <a href="collection.html" class="sidebar__cta-link">전체 컬렉션 보기 &rarr;</a>
         </div>
       </aside>
 
@@ -61,9 +64,13 @@
         .slice()
         .sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)));
 
-      /* ---------- 사이드바: 최근 5개 ---------- */
+      /* ---------- 사이드바: 최근 7개 ---------- */
       if (sorted.length) {
-        sidebarEl.innerHTML = sorted.slice(0, 5).map((a) => `
+        sidebarEl.innerHTML = sorted.slice(0, 7).map((a) => {
+          const limitedDot = a.is_limited
+            ? ' <span class="sidebar__limited-dot" aria-hidden="true">&bull;</span>'
+            : '';
+          return `
           <li class="sidebar__list-item">
             <a href="album.html?id=${e(a.id)}" class="sidebar__album-link">
               <img class="sidebar__thumb"
@@ -72,11 +79,13 @@
                    onerror="${onerr}"
                    loading="lazy">
               <span class="sidebar__album-info">
-                <span class="sidebar__album-title">${e(a.title)}</span>
-                <span class="sidebar__album-date">${e(SLEEVE.formatDate(a.created_at))}</span>
+                <span class="sidebar__album-title">${e(a.title)}${limitedDot}</span>
+                <span class="sidebar__album-artist">${e(a.artist)}</span>
+                <span class="sidebar__album-meta">${e(a.format)} &middot; ${e(String(a.release_year))}</span>
               </span>
             </a>
-          </li>`).join('');
+          </li>`;
+        }).join('');
       } else {
         sidebarEl.innerHTML = '<li class="sidebar__list-item text-muted">표시할 음반이 없습니다.</li>';
       }
