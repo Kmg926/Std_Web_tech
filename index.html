@@ -16,127 +16,95 @@
 <body>
   <div id="navbar-placeholder"></div>
 
-  <main id="main-content">
+  <div class="container">
+    <div class="main-layout">
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero__content">
-        <div class="vinyl-ring hero__ring" aria-hidden="true"></div>
-        <h1>내가 모은 음반,<br>내가 만든 자켓</h1>
-        <p class="hero__subtitle">LP·CD 아카이브와 자켓 디자인 포트폴리오</p>
-        <div class="hero__actions">
-          <a class="btn-primary" href="collection.html">컬렉션 보기</a>
-          <a class="btn-outline" href="designs.html">디자인 보기</a>
+      <!-- 좌측 사이드바 -->
+      <aside class="sidebar" aria-label="사이드바">
+        <div class="sidebar__intro">
+          <p class="sidebar__site-name">SLEEVE</p>
+          <p class="sidebar__tagline">바이닐 아카이브</p>
         </div>
-      </div>
-    </section>
+        <hr class="sidebar__divider">
+        <div class="sidebar__recent">
+          <p class="sidebar__section-label">최근 추가된 앨범</p>
+          <ul id="sidebarAlbums" class="sidebar__list">
+            <li class="sidebar__list-item sidebar__list-item--loading">불러오는 중&hellip;</li>
+          </ul>
+        </div>
+      </aside>
 
-    <!-- 최근 추가 앨범 -->
-    <section class="section">
-      <div class="container">
-        <div class="section__header">
-          <h2>최근 추가</h2>
-          <a class="section__link" href="collection.html">전체 보기 &rarr;</a>
-        </div>
-        <div class="grid" id="recentAlbums">
+      <!-- 우측 메인 피드 -->
+      <main id="main-content" class="feed">
+        <div id="feedPosts">
           <p class="text-muted">불러오는 중&hellip;</p>
         </div>
-      </div>
-    </section>
+      </main>
 
-    <!-- 최근 디자인 -->
-    <section class="section">
-      <div class="container">
-        <div class="section__header">
-          <h2>최근 디자인</h2>
-          <a class="section__link" href="designs.html">전체 보기 &rarr;</a>
-        </div>
-        <div class="grid grid--3" id="recentDesigns">
-          <p class="text-muted">불러오는 중&hellip;</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 바이닐 문화 (정적) -->
-    <section class="section">
-      <div class="container">
-        <div class="section__header">
-          <h2>바이닐을 기록하는 방법</h2>
-        </div>
-        <div class="grid grid--3">
-
-          <article class="value-card">
-            <span class="value-card__mark" aria-hidden="true">&#9678;</span>
-            <h3 class="value-card__title">수집 &middot; Archive</h3>
-            <p class="value-card__desc">보유한 LP와 CD를 자켓, 트랙리스트, 감상평과 함께 한 장 한 장 기록합니다.</p>
-          </article>
-
-          <article class="value-card">
-            <span class="value-card__mark" aria-hidden="true">&#9671;</span>
-            <h3 class="value-card__title">창작 &middot; Portfolio</h3>
-            <p class="value-card__desc">직접 만든 자켓과 바이닐 디자인을 제작 의도와 과정과 함께 전시합니다.</p>
-          </article>
-
-          <article class="value-card">
-            <span class="value-card__mark" aria-hidden="true">&#9633;</span>
-            <h3 class="value-card__title">공유 &middot; Curation</h3>
-            <p class="value-card__desc">무드와 테마별 추천, 입문 가이드로 바이닐 문화를 함께 나눕니다.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
+    </div>
+  </div>
 
   <div id="footer-placeholder"></div>
 
   <script src="assets/js/components.js"></script>
   <script>
     (async () => {
-      const recentAlbumsEl = document.getElementById('recentAlbums');
-      const recentDesignsEl = document.getElementById('recentDesigns');
       const e = SLEEVE.escapeHTML;
+      const sidebarEl = document.getElementById('sidebarAlbums');
+      const feedEl = document.getElementById('feedPosts');
 
-      const [albums, designs] = await Promise.all([
-        SLEEVE.loadAlbums(),
-        SLEEVE.loadDesigns()
-      ]);
+      const albums = await SLEEVE.loadAlbums();
 
-      // 최근 앨범 4개 — 빈 데이터 방어
-      if (albums.length) {
-        recentAlbumsEl.innerHTML = albums.slice(0, 4).map((a) => `
-          <a class="card" href="album.html?id=${e(a.id)}">
-            <div class="card__cover">
-              ${a.is_limited ? '<span class="badge-limited">한정반</span>' : ''}
-              <img data-src="${e(a.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${e(a.title)} 자켓" loading="lazy" onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
-            </div>
-            <div class="card__body">
-              <p class="card__artist">${e(a.artist)}</p>
-              <h3 class="card__title">${e(a.title)}</h3>
-              <div class="card__meta"><span>${e(String(a.release_year))}</span><span>${e(a.format)}</span></div>
-            </div>
-          </a>
+      // created_at 내림차순 정렬 (문자열 "YYYY-MM-DD" 비교)
+      const sorted = albums
+        .slice()
+        .sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)));
+
+      /* ---------- 사이드바: 최근 추가된 앨범 최대 5개 ---------- */
+      if (sorted.length) {
+        sidebarEl.innerHTML = sorted.slice(0, 5).map((a) => `
+          <li class="sidebar__list-item">
+            <a href="album.html?id=${e(a.id)}" class="sidebar__album-link">
+              <img class="sidebar__thumb" data-src="${e(a.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${e(a.title)}" loading="lazy">
+              <span class="sidebar__album-info">
+                <span class="sidebar__album-title">${e(a.title)}</span>
+                <span class="sidebar__album-date">${e(SLEEVE.formatDate(a.created_at))}</span>
+              </span>
+            </a>
+          </li>
         `).join('');
       } else {
-        recentAlbumsEl.innerHTML = '<p class="text-muted">표시할 음반이 없습니다.</p>';
+        sidebarEl.innerHTML = '<li class="sidebar__list-item text-muted">표시할 음반이 없습니다.</li>';
       }
 
-      // 최근 디자인 3개 — 빈 데이터 방어
-      if (designs.length) {
-        recentDesignsEl.innerHTML = designs.slice(0, 3).map((d) => `
-          <a class="card" href="design.html?id=${e(d.id)}">
-            <div class="card__cover">
-              <img data-src="${e(d.thumb_path)}" src="assets/img/ui/placeholder.svg" alt="${e(d.title)} 디자인" loading="lazy" onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">${e(d.title)}</h3>
-              <p class="card__meta">${e(d.tools.join(', '))}</p>
-            </div>
-          </a>
-        `).join('');
+      /* ---------- 메인 피드: 전체 앨범 포스트 ---------- */
+      if (sorted.length) {
+        feedEl.innerHTML = sorted.map((a) => {
+          // note excerpt: escape 후에 자른다 (엔티티가 중간에 잘리지 않도록 길이 기준은 원본 escape 결과)
+          let excerptHTML = '';
+          if (a.note && String(a.note).trim()) {
+            const safe = e(a.note);
+            const truncated = safe.length > 150 ? safe.slice(0, 150) + '&hellip;' : safe;
+            excerptHTML = `<p class="post__excerpt">${truncated}</p>`;
+          }
+          return `
+            <article class="post">
+              <header class="post__header">
+                <h2 class="post__title"><a href="album.html?id=${e(a.id)}">${e(a.title)}</a></h2>
+                <p class="post__meta"><span>${e(a.genre)}</span> <span>${e(a.format)}</span> <span>${e(String(a.release_year))}</span></p>
+              </header>
+              <a href="album.html?id=${e(a.id)}" class="post__cover-link">
+                <img class="post__cover" data-src="${e(a.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${e(a.title)} 자켓" loading="lazy">
+              </a>
+              <div class="post__body">
+                ${excerptHTML}
+                <a href="album.html?id=${e(a.id)}" class="post__more">자세히 보기 &rarr;</a>
+              </div>
+            </article>
+          `;
+        }).join('');
       } else {
-        recentDesignsEl.innerHTML = '<p class="text-muted">표시할 디자인이 없습니다.</p>';
+        feedEl.innerHTML = '<div class="empty-state"><p>아직 기록된 음반이 없습니다.</p></div>';
       }
 
       // 동적으로 추가된 이미지에 lazy load 재적용

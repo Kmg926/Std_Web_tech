@@ -122,10 +122,10 @@
         </ul>
 
         ${renderMoods(album.moods)}
+        ${renderTracks(album.tracks)}
       </div>
     </article>
 
-    ${renderTracks(album.tracks)}
     ${renderNote(album.note)}
     ${renderRelated()}
   `;
