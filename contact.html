@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의 | SLEEVE</title>
+  <meta name="description" content="SLEEVE 문의 안내 — 이메일·SNS 연락처와 자주 묻는 질문(FAQ).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-nav="contact">
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+
+    <section class="section">
+      <div class="container">
+
+        <!-- 페이지 헤더 -->
+        <header class="page-header">
+          <h1>문의</h1>
+          <span class="page-header__divider" aria-hidden="true"></span>
+          <p class="text-muted">SLEEVE에 대한 질문이나 협업 제안을 보내주세요.</p>
+        </header>
+
+        <!-- 연락처 카드 그리드 -->
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:gimm6068@gmail.com">
+            <span class="contact-card__icon" aria-hidden="true">&#9993;</span>
+            <p class="contact-card__label">이메일</p>
+            <p class="contact-card__value">gimm6068@gmail.com</p>
+          </a>
+          <a class="contact-card" href="https://instagram.com/sleeve.archive" target="_blank" rel="noopener">
+            <span class="contact-card__icon" aria-hidden="true">&#128247;</span>
+            <p class="contact-card__label">인스타그램</p>
+            <p class="contact-card__value">@sleeve.archive</p>
+          </a>
+        </div>
+
+        <!-- 자주 묻는 질문 (FAQ 아코디언) -->
+        <div class="section__header">
+          <h2>자주 묻는 질문</h2>
+        </div>
+        <ul id="faqList" class="guide-list" role="list"></ul>
+        <p id="faqEmpty" class="empty-state" hidden>아직 FAQ가 없습니다.</p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script>
+    /* contact.html 전용 인라인 스크립트 — faq.json 로드 후 아코디언 렌더.
+       guide.html 의 guide-list 아코디언 패턴과 동일(aria-expanded + hidden, 한 번에 하나만 열림). */
+    (async () => {
+      const faqList = document.getElementById('faqList');
+      const faqEmpty = document.getElementById('faqEmpty');
+
+      let data = [];
+      try {
+        const res = await fetch('assets/data/faq.json');
+        if (!res.ok) throw new Error(res.status);
+        data = await res.json();
+      } catch (e) {
+        console.warn('FAQ load failed:', e);
+      }
+
+      if (!Array.isArray(data) || !data.length) {
+        faqEmpty.hidden = false;
+        return;
+      }
+
+      const e = window.SLEEVE.escapeHTML;
+
+      faqList.innerHTML = data
+        .map((item, i) => {
+          const bodyId = `faq-body-${i}`;
+          const answer = e(item.a || '').replace(/\r?\n/g, '<br>');
+          return `
+        <li class="guide-list__item">
+          <button class="guide-list__toggle" type="button" aria-expanded="false" aria-controls="${bodyId}">
+            <span class="guide-list__title">${e(item.q)}</span>
+          </button>
+          <div class="guide-list__body" id="${bodyId}" hidden>
+            <p>${answer}</p>
+          </div>
+        </li>`;
+        })
+        .join('');
+
+      // 아코디언 토글 (이벤트 위임, 한 번에 하나만 열림)
+      faqList.addEventListener('click', (ev) => {
+        const btn = ev.target.closest('.guide-list__toggle');
+        if (!btn || !faqList.contains(btn)) return;
+
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        faqList
+          .querySelectorAll('.guide-list__toggle[aria-expanded="true"]')
+          .forEach((b) => {
+            b.setAttribute('aria-expanded', 'false');
+            const body = document.getElementById(b.getAttribute('aria-controls'));
+            if (body) body.hidden = true;
+          });
+
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          const body = document.getElementById(btn.getAttribute('aria-controls'));
+          if (body) body.hidden = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

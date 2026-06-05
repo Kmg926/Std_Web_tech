@@ -37,13 +37,24 @@
   <script src="assets/js/components.js"></script>
   <script>
     (async () => {
+      const detail = document.getElementById('design-detail');
+
+      function showNotFound(msg) {
+        if (!detail) return;
+        detail.innerHTML = `
+          <div class="empty-state">
+            <p>${SLEEVE.escapeHTML(msg)}</p>
+            <a href="designs.html" class="btn-outline" style="margin-top:var(--space-4);display:inline-block;">← 디자인 목록으로</a>
+          </div>`;
+      }
+
       const params = new URLSearchParams(location.search);
       const id = params.get('id');
-      if (!id) { location.href = '404.html'; return; }
+      if (!id) { showNotFound('디자인 ID가 지정되지 않았습니다.'); return; }
 
       const designs = await SLEEVE.loadDesigns();
       const design = designs.find((d) => d.id === id);
-      if (!design) { location.href = '404.html'; return; }
+      if (!design) { showNotFound('해당 디자인을 찾을 수 없습니다.'); return; }
 
       const e = SLEEVE.escapeHTML;
 
@@ -56,7 +67,7 @@
 
       const formatMonth = (s) => e(String(s).slice(0, 7).replace('-', '.'));
 
-      document.getElementById('design-detail').innerHTML = `
+      detail.innerHTML = `
         <div class="design-hero">
           <img data-src="${e(heroImg)}" src="assets/img/ui/placeholder.svg"
                alt="${e(design.title)}" loading="eager"

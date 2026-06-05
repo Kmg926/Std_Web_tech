@@ -69,7 +69,7 @@ DB 테이블 한 줄(레코드) = JSON 객체 한 개. assets/data/ 아래에 �
   (원래 designs + design_images 합침)
 - assets/data/guide.json — [{ id(slug), title, category, body, created_at }]
 - assets/data/faq.json — [{ q, a }]  (contact.html 자주 묻는 질문)
-
+                                                                                    
 로딩 방식: 각 페이지 JS가 fetch('assets/data/xxx.json') 로 읽어 렌더.
 (파일을 file:// 로 직접 열면 fetch가 막힐 수 있으니, 개발 중엔 로컬 정적 서버(예: `python -m http.server`)로 확인. 데이터를 .js의 전역 변수로 두는 폴백도 허용.)
 

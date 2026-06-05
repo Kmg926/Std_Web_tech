@@ -566,3 +566,54 @@
   }
 }
 
+/* ============================ Contact (contact.html) ============================ */
+/* 연락처 카드 그리드: 모바일 1열 → 768px 이상 2열 */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-7) var(--space-5);
+  background-color: var(--bg-card);
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.contact-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+}
+
+.contact-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.contact-card__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.contact-card__value {
+  color: var(--amber);
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+

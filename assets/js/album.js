@@ -1,33 +1,27 @@
-/* ============================================================
-   SLEEVE — album.js
-   album.html 전용. URL ?id=slug 로 앨범 상세를 렌더.
-   - albums.json 에서 id 매칭. 없거나 잘못된 id → 404.html
-   - 커버 / 메타 / 트랙리스트 / 무드 / 감상평 / 관련 음반
-   - 모든 동적 텍스트는 SLEEVE.escapeHTML 처리
-   ============================================================ */
 'use strict';
 
 (async () => {
   const { escapeHTML } = window.SLEEVE;
+  const root = document.getElementById('album-detail');
+
+  function showNotFound(msg) {
+    if (!root) return;
+    root.innerHTML = `
+      <div class="empty-state">
+        <p>${escapeHTML(msg)}</p>
+        <a href="collection.html" class="btn-outline" style="margin-top:var(--space-4);display:inline-block;">← 컬렉션으로 돌아가기</a>
+      </div>`;
+  }
 
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
-  if (!id) {
-    location.href = '404.html';
-    return;
-  }
+  if (!id) { showNotFound('앨범 ID가 지정되지 않았습니다.'); return; }
 
   const albums = await SLEEVE.loadAlbums();
   const album = albums.find((a) => a.id === id);
-  if (!album) {
-    location.href = '404.html';
-    return;
-  }
+  if (!album) { showNotFound('해당 앨범을 찾을 수 없습니다.'); return; }
 
-  // 문서 제목 갱신
   document.title = `${album.artist} — ${album.title} | SLEEVE`;
-
-  const root = document.getElementById('album-detail');
   if (!root) return;
 
   /* --------------------------------------------------------
