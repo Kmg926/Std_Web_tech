@@ -775,7 +775,7 @@
 
 .post__cover-link {
   display: block;
-  padding: 0 var(--space-6);
+  padding: var(--space-4) var(--space-6);
 }
 
 .post__cover {
