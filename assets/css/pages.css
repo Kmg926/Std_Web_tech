@@ -728,16 +728,26 @@
   gap: var(--space-10);
 }
 
+/* feedPosts 래퍼에 gap 적용 — articles가 feedPosts 안에 있으므로 */
+#feedPosts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
 .post {
+  position: relative;
   background-color: var(--bg-card);
   border: 1px solid rgba(var(--line-rgb), 0.1);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: border-color var(--transition-base);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+  cursor: pointer;
 }
 
 .post:hover {
-  border-color: rgba(var(--line-rgb), 0.3);
+  border-color: rgba(var(--line-rgb), 0.35);
+  transform: translateY(-2px);
 }
 
 .post__header {
@@ -751,12 +761,19 @@
   margin-bottom: var(--space-2);
 }
 
+/* stretched-link: 제목 a를 카드 전체로 확장해 카드 전체 클릭 가능 */
 .post__title a {
   color: var(--paper);
   transition: color var(--transition-base);
 }
 
-.post__title a:hover {
+.post__title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.post:hover .post__title a {
   color: var(--amber);
 }
 
@@ -773,15 +790,16 @@
   margin-right: var(--space-3);
 }
 
+/* 커버 이미지: 이미지 링크 불필요(카드 전체 클릭), 패딩으로 띄움 */
 .post__cover-link {
   display: block;
   padding: var(--space-4) var(--space-6);
+  pointer-events: none;
 }
 
 .post__cover {
   width: 100%;
-  max-height: 320px;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
   background-color: var(--bg-surface);
@@ -798,7 +816,10 @@
   margin-bottom: var(--space-4);
 }
 
+/* "자세히 보기"는 stretched-link 위로 올려 독립 클릭 가능하게 유지 */
 .post__more {
+  position: relative;
+  z-index: 1;
   color: var(--amber);
   font-size: 0.9rem;
   font-weight: 500;
