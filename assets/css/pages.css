@@ -320,6 +320,12 @@
   padding: var(--space-5);
 }
 
+/* ============================ Guide filter ============================ */
+#guideFilter {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 /* ============================ Guide list ============================ */
 .guide-list {
   display: flex;
@@ -465,9 +471,11 @@
   }
 }
 
+/* 상세 페이지에서는 자켓을 정사각으로 강제 크롭하지 않고
+   이미지 자체의 원본 비율 그대로 보여준다(피드/카드의 1:1 그리드와는
+   다른 맥락 — "자세히 보기"는 실제 자켓 형태를 온전히 드러내는 자리). */
 .album__cover {
   position: relative;
-  aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
   overflow: hidden;
   background-color: var(--bg-surface);
@@ -475,9 +483,9 @@
 }
 
 .album__cover img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .album__info {
@@ -624,14 +632,14 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-7);
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: var(--space-7) var(--space-5);
 }
 
 @media (min-width: 1200px) {
   .main-layout {
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 320px 1fr;
     align-items: start;
   }
 }
@@ -659,7 +667,7 @@
 }
 
 .sidebar__tagline {
-  color: var(--muted);
+  color: #999B9B;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -670,6 +678,14 @@
   color: var(--cream);
   font-size: 0.88rem;
   line-height: 1.6;
+}
+
+.sidebar__hero-img {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-5);
+  border-radius: var(--radius-md);
+  object-fit: cover;
 }
 
 .sidebar__section-label {
@@ -727,7 +743,7 @@
 
 .sidebar__album-artist {
   font-size: 0.75rem;
-  color: var(--muted);
+  color: #999B9B;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -739,10 +755,6 @@
   opacity: 0.7;
 }
 
-.sidebar__limited-dot {
-  color: var(--amber);
-  font-size: 0.7rem;
-}
 
 /* Sidebar CTA */
 .sidebar__cta {
@@ -764,19 +776,28 @@
 
 /* ============================ Feed (post cards) ============================ */
 #feedPosts {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-7);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
 }
 
+@media (min-width: 1200px) {
+  #feedPosts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 같은 행의 카드는 그리드의 기본 align-items: stretch 로 높이가
+   맞춰진다 — 카드 내부를 세로 flex 로 짜서 자켓·제목·배지 줄이
+   카드마다 항상 같은 위치에 오도록 한다. */
 .post {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
   background-color: var(--bg-card);
   border: 1px solid rgba(var(--line-rgb), 0.1);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   overflow: hidden;
   transition: border-color var(--transition-base), transform var(--transition-base);
   cursor: pointer;
@@ -791,15 +812,25 @@
   padding: var(--space-4) var(--space-6) var(--space-2);
 }
 
+/* 제목 1줄 고정 영역 — 모든 카드의 제목을 한 줄로 통일해
+   자켓 시작 y좌표(따라서 카드 전체 구조)가 항상 같아지게 한다.
+   긴 제목은 JS(truncateTitle)에서 31자로 잘라 "…" 처리하므로
+   여기서는 폭 기준 보조 말줄임(text-overflow)만 보장하면 된다. */
 .post__title {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.3;
   margin-bottom: var(--space-2);
+  height: calc(1.3em * 1);
+  overflow: hidden;
 }
 
 /* stretched-link: 제목 a가 카드 전체를 덮어 어디서든 클릭 가능 */
 .post__title a {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: var(--paper);
   transition: color var(--transition-base);
 }
@@ -826,10 +857,9 @@
   margin-right: var(--space-2);
 }
 
-/* 커버 이미지 래퍼: 좌우 패딩으로 카드 벽에서 띄우고, 폭을 제한해 한 화면에 카드 여러 개 노출 */
+/* 커버 이미지 래퍼: 자켓이 카드 폭에 꽉 차도록 좌우 패딩 제거 */
 .post__cover-wrap {
-  max-width: 460px;
-  padding: var(--space-2) var(--space-5);
+  padding: var(--space-2) 0;
 }
 
 .post__cover {
@@ -838,58 +868,33 @@
   object-fit: cover;
   display: block;
   background-color: var(--bg-surface);
-  border-radius: var(--radius-md);
+  border-radius: 0;
 }
 
 .post__body {
   padding: var(--space-3) var(--space-6) var(--space-4);
 }
 
-/* 감상평 3줄 clamp */
+/* 감상평 2줄 고정 영역 — 제목과 동일하게 "칸 높이 고정"과
+   "텍스트 line-clamp"의 역할을 분리한다. 한 요소에 height 와
+   line-clamp 를 같이 주면 내부 박스 높이 계산이 충돌해 2줄을
+   넘는 텍스트(예: "…쥬얼케이스.")가 클리핑되지 않고 새어나온다.
+   p(.post__excerpt): 칸 자체 높이만 2줄로 고정 + overflow 클립
+   span(.post__excerpt-text): 실제 텍스트에 line-clamp 로 "…" 처리 */
 .post__excerpt {
   color: var(--cream);
   font-size: 0.92rem;
   line-height: 1.75;
   max-width: 60ch;
   margin-bottom: var(--space-4);
+  height: calc(1.75em * 2);
+  overflow: hidden;
+}
+
+.post__excerpt-text {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* 하단 푸터: "자세히 보기" 버튼 + 태그/배지 */
-.post__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-}
-
-.post__tags {
-  display: flex;
-  gap: var(--space-2);
-  align-items: center;
-}
-
-/* "자세히 보기" — 앰버 외곽선 버튼, 호버 시 채워짐 */
-.post__more {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--amber);
-  border-radius: var(--radius-sm);
-  color: var(--amber);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: background-color var(--transition-base), color var(--transition-base);
-}
-
-.post__more:hover {
-  background-color: var(--amber);
-  color: var(--ink);
-}

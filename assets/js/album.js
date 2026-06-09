@@ -76,17 +76,24 @@
 
     const cards = related
       .map(
-        (a) => `
+        (a) => {
+          const badges = [];
+          if (a.is_signed)   badges.push('<span class="badge-signed">사인반</span>');
+          if (a.is_bootleg)  badges.push('<span class="badge-bootleg">부틀렉</span>');
+          const badgeGroup = badges.length ? `<div class="badge-group">${badges.join('')}</div>` : '';
+
+          return `
         <a class="card" href="album.html?id=${escapeHTML(a.id)}" aria-label="${escapeHTML(a.artist)} — ${escapeHTML(a.title)}">
           <div class="card__cover">
-            ${a.is_limited ? '<span class="badge-limited">한정반</span>' : ''}
             <img data-src="${escapeHTML(a.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${escapeHTML(a.title)} 자켓" loading="lazy">
           </div>
           <div class="card__body">
             <p class="card__artist">${escapeHTML(a.artist)}</p>
             <h3 class="card__title">${escapeHTML(a.title)}</h3>
+            ${badgeGroup}
           </div>
-        </a>`
+        </a>`;
+        }
       )
       .join('');
 
@@ -102,10 +109,14 @@
      onerror: 깨진 커버는 placeholder 로 폴백 (인라인 핸들러는
      마크업이 신뢰 데이터라 안전, 외부 입력 미포함).
      -------------------------------------------------------- */
+  const albumBadges = [];
+  if (album.is_signed)   albumBadges.push('<span class="badge-signed">사인반</span>');
+  if (album.is_bootleg)  albumBadges.push('<span class="badge-bootleg">부틀렉</span>');
+  const albumBadgeGroup = albumBadges.length ? `<div class="badge-group">${albumBadges.join('')}</div>` : '';
+
   root.innerHTML = `
     <article class="album">
       <div class="album__cover">
-        ${album.is_limited ? '<span class="badge-limited">한정반</span>' : ''}
         <img src="${escapeHTML(album.cover_path)}"
              alt="${escapeHTML(album.title)} 자켓"
              onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg';">
@@ -114,6 +125,7 @@
       <div class="album__info">
         <p class="album__artist">${escapeHTML(album.artist)}</p>
         <h1 class="album__title">${escapeHTML(album.title)}</h1>
+        ${albumBadgeGroup}
 
         <ul class="album__meta">
           <li><span class="album__meta-label">연도</span> ${escapeHTML(String(album.release_year))}</li>

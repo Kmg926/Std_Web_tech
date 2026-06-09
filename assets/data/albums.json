@@ -1,184 +1,2687 @@
 [
   {
-    "id": "kind-of-blue",
-    "title": "Kind of Blue",
-    "artist": "Miles Davis",
-    "release_year": 1959,
-    "format": "Vinyl",
-    "genre": "Jazz",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "Modal jazz cornerstone. 180g 오디오파일 바이닐.",
-    "is_limited": false,
-    "moods": ["late-night", "focus", "warm"],
-    "tracks": [
-      {"position": 1, "title": "So What"},
-      {"position": 2, "title": "Freddie Freeloader"},
-      {"position": 3, "title": "Blue in Green"},
-      {"position": 4, "title": "All Blues"},
-      {"position": 5, "title": "Flamenco Sketches"}
-    ],
-    "created_at": "2024-01-15"
-  },
-  {
-    "id": "in-rainbows",
-    "title": "In Rainbows",
-    "artist": "Radiohead",
-    "release_year": 2007,
-    "format": "Vinyl",
-    "genre": "Rock",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "Pay-what-you-want로 발매된 명반. 따뜻한 텍스처의 사운드.",
-    "is_limited": false,
-    "moods": ["rainy-day", "melancholic"],
-    "tracks": [
-      {"position": 1, "title": "15 Step"},
-      {"position": 2, "title": "Bodysnatchers"},
-      {"position": 3, "title": "Nude"},
-      {"position": 4, "title": "Weird Fishes / Arpeggi"},
-      {"position": 5, "title": "All I Need"},
-      {"position": 6, "title": "Faust Arp"},
-      {"position": 7, "title": "Reckoner"},
-      {"position": 8, "title": "House of Cards"},
-      {"position": 9, "title": "Jigsaw Falling into Place"},
-      {"position": 10, "title": "Videotape"}
-    ],
-    "created_at": "2024-01-22"
-  },
-  {
-    "id": "selected-ambient-vol2",
-    "title": "Selected Ambient Works Volume II",
-    "artist": "Aphex Twin",
-    "release_year": 1994,
+    "id": "channel-orange",
+    "title": "channel ORANGE",
+    "artist": "Frank Ocean",
+    "release_year": 2012,
     "format": "CD",
-    "genre": "Electronic",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "거의 무제 트랙으로 이루어진 앰비언트의 이정표.",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/CD_Frank Ocean_channel ORANGE_디지팩.jpg",
+    "note": "느슨하고 따뜻한 사운드스케이프 위에 담담한 내러티브가 흐르는 R&B의 현대적 고전. 디지팩반으로 소장.",
     "is_limited": false,
-    "moods": ["late-night", "focus", "rainy-day"],
-    "tracks": [
-      {"position": 1, "title": "Cliffs"},
-      {"position": 2, "title": "Radiator"},
-      {"position": 3, "title": "Rhubarb"},
-      {"position": 4, "title": "Hankie"},
-      {"position": 5, "title": "Grass"},
-      {"position": 6, "title": "Mould"}
+    "is_signed": false,
+    "moods": [
+      "late-night",
+      "melancholic",
+      "warm"
     ],
-    "created_at": "2024-02-05"
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Start"
+      },
+      {
+        "position": 2,
+        "title": "Thinkin Bout You"
+      },
+      {
+        "position": 3,
+        "title": "Fertilizer"
+      },
+      {
+        "position": 4,
+        "title": "Sierra Leone"
+      },
+      {
+        "position": 5,
+        "title": "Sweet Life"
+      },
+      {
+        "position": 6,
+        "title": "Not Just Money"
+      },
+      {
+        "position": 7,
+        "title": "Super Rich Kids (feat. Earl Sweatshirt)"
+      },
+      {
+        "position": 8,
+        "title": "Pilot Jones"
+      },
+      {
+        "position": 9,
+        "title": "Crack Rock"
+      },
+      {
+        "position": 10,
+        "title": "Pyramids"
+      },
+      {
+        "position": 11,
+        "title": "Lost"
+      },
+      {
+        "position": 12,
+        "title": "White (feat. John Mayer)"
+      },
+      {
+        "position": 13,
+        "title": "Monks"
+      },
+      {
+        "position": 14,
+        "title": "Bad Religion"
+      },
+      {
+        "position": 15,
+        "title": "Pink Matter (feat. André 3000)"
+      },
+      {
+        "position": 16,
+        "title": "Forrest Gump"
+      },
+      {
+        "position": 17,
+        "title": "End / Golden Girl (feat. Tyler, the Creator)"
+      }
+    ],
+    "created_at": "2024-01-10"
   },
   {
-    "id": "goldberg-variations",
-    "title": "Bach: The Goldberg Variations",
-    "artist": "Glenn Gould",
-    "release_year": 1981,
+    "id": "cruel-summer",
+    "title": "Kanye West Presents GOOD Music: Cruel Summer",
+    "artist": "Various Artists",
+    "release_year": 2012,
     "format": "CD",
-    "genre": "Classical",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "굴드의 1981년 재녹음. 명료하고 사색적인 연주.",
-    "is_limited": false,
-    "moods": ["focus", "melancholic"],
-    "tracks": [
-      {"position": 1, "title": "Aria"},
-      {"position": 2, "title": "Variatio 1 a 1 Clav."},
-      {"position": 3, "title": "Variatio 5 a 1 ovvero 2 Clav."},
-      {"position": 4, "title": "Variatio 13 a 2 Clav."},
-      {"position": 5, "title": "Variatio 25 a 2 Clav. (Adagio)"},
-      {"position": 6, "title": "Aria da Capo e Fine"}
-    ],
-    "created_at": "2024-02-18"
-  },
-  {
-    "id": "random-access-memories",
-    "title": "Random Access Memories",
-    "artist": "Daft Punk",
-    "release_year": 2013,
-    "format": "Vinyl",
-    "genre": "Electronic",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "라이브 세션 기반의 디스코·펑크 회귀작. 게이트폴드 2LP 한정반.",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/CD_Various Artists_Kanye West Presents Good Music Cruel Summer_쥬얼_일본반.jpg",
+    "note": "GOOD Music 군단의 합동 컴필레이션. 보너스 트랙이 추가된 일본반 쥬얼케이스.",
     "is_limited": true,
-    "moods": ["energetic", "warm", "late-night"],
-    "tracks": [
-      {"position": 1, "title": "Give Life Back to Music"},
-      {"position": 2, "title": "The Game of Love"},
-      {"position": 3, "title": "Giorgio by Moroder"},
-      {"position": 4, "title": "Instant Crush"},
-      {"position": 5, "title": "Lose Yourself to Dance"},
-      {"position": 6, "title": "Touch"},
-      {"position": 7, "title": "Get Lucky"},
-      {"position": 8, "title": "Doin' It Right"},
-      {"position": 9, "title": "Contact"}
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "warm"
     ],
-    "created_at": "2024-03-01"
+    "tracks": [
+      {
+        "position": 1,
+        "title": "To the World (feat. R. Kelly, Teyana Taylor)"
+      },
+      {
+        "position": 2,
+        "title": "Clique (feat. Jay-Z, Big Sean)"
+      },
+      {
+        "position": 3,
+        "title": "Mercy (feat. Big Sean, Pusha T, 2 Chainz)"
+      },
+      {
+        "position": 4,
+        "title": "New God Flow (feat. Pusha T, Ghostface Killah)"
+      },
+      {
+        "position": 5,
+        "title": "The Morning (feat. Raekwon, Pusha T, Common, 2 Chainz, CyHi, Kid Cudi, D'banj)"
+      },
+      {
+        "position": 6,
+        "title": "Cold (feat. DJ Khaled)"
+      },
+      {
+        "position": 7,
+        "title": "Higher (feat. The-Dream, Pusha T, Ma$e, Cocaine 80s)"
+      },
+      {
+        "position": 8,
+        "title": "Sin City (feat. John Legend, Travis Scott, Teyana Taylor, CyHi, Malik Yusef)"
+      },
+      {
+        "position": 9,
+        "title": "The One (feat. Big Sean, 2 Chainz, Marsha Ambrosius)"
+      },
+      {
+        "position": 10,
+        "title": "Creepers (feat. Kid Cudi)"
+      },
+      {
+        "position": 11,
+        "title": "Bliss (feat. John Legend, Teyana Taylor)"
+      },
+      {
+        "position": 12,
+        "title": "Don't Like.1 (feat. Chief Keef, Pusha T, Jadakiss, Big Sean)"
+      }
+    ],
+    "created_at": "2024-01-18"
   },
   {
-    "id": "rumours",
-    "title": "Rumours",
-    "artist": "Fleetwood Mac",
-    "release_year": 1977,
-    "format": "Vinyl",
-    "genre": "Rock",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "밴드 내 격변 속에서 탄생한 소프트 록 걸작.",
-    "is_limited": false,
-    "moods": ["warm", "melancholic"],
-    "tracks": [
-      {"position": 1, "title": "Second Hand News"},
-      {"position": 2, "title": "Dreams"},
-      {"position": 3, "title": "Never Going Back Again"},
-      {"position": 4, "title": "Don't Stop"},
-      {"position": 5, "title": "Go Your Own Way"},
-      {"position": 6, "title": "Songbird"},
-      {"position": 7, "title": "The Chain"},
-      {"position": 8, "title": "Gold Dust Woman"}
+    "id": "viceversa",
+    "title": "www.instagram.com/rollingloud/viceversartist",
+    "artist": "viceversa",
+    "release_year": 2022,
+    "format": "CD",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/CD_viceversa_www.instagram.com슬래시rollingloud슬래시viceversartist_디지팩.jpg",
+    "note": "인스타그램에서 우연히 알게 된 루키 듀오의 자체 발매반. 거친 질감과 솔직한 가사가 매력적.",
+    "is_limited": true,
+    "is_signed": true,
+    "moods": [
+      "late-night",
+      "energetic"
     ],
-    "created_at": "2024-03-12"
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Trip Trip Trip"
+      },
+      {
+        "position": 2,
+        "title": "@xxl"
+      },
+      {
+        "position": 3,
+        "title": "@rollingloud"
+      },
+      {
+        "position": 4,
+        "title": "When though?"
+      },
+      {
+        "position": 5,
+        "title": "@rolex (Prod. Ian Ka$h)"
+      },
+      {
+        "position": 6,
+        "title": "Slow and steady (Prod. Hassan Malik)"
+      },
+      {
+        "position": 7,
+        "title": "@ferrari (Prod. Ian Ka$h)"
+      },
+      {
+        "position": 8,
+        "title": "@mercedesbenz (Prod. Ian Ka$h)"
+      },
+      {
+        "position": 9,
+        "title": "@mclaren (Prod. Ian Ka$h)"
+      },
+      {
+        "position": 10,
+        "title": "@rollsroycecars (Prod. imeanseoul, Wylo)"
+      },
+      {
+        "position": 11,
+        "title": "@paganiautomobili (Prod. XAVE)"
+      },
+      {
+        "position": 12,
+        "title": "You in the mirror are closer than you appear, @viceversartist (Prod. Ian Ka$h)"
+      }
+    ],
+    "created_at": "2024-05-02"
   },
   {
-    "id": "blue",
-    "title": "Blue",
-    "artist": "Joni Mitchell",
-    "release_year": 1971,
-    "format": "Vinyl",
-    "genre": "Pop",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "고백적 싱어송라이팅의 정수. 친밀하고 투명한 사운드.",
+    "id": "noksaek-inyeom",
+    "title": "녹색이념",
+    "artist": "김태균",
+    "release_year": 2016,
+    "format": "CD",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/CD_김태균_녹색이념_쥬얼.jpg",
+    "note": "절제된 톤의 포크 록 사운드에 담긴 단단한 메시지. 쥬얼케이스 초판.",
     "is_limited": false,
-    "moods": ["rainy-day", "melancholic", "late-night"],
+    "is_signed": false,
+    "moods": [
+      "focus",
+      "melancholic"
+    ],
     "tracks": [
-      {"position": 1, "title": "All I Want"},
-      {"position": 2, "title": "My Old Man"},
-      {"position": 3, "title": "Little Green"},
-      {"position": 4, "title": "Carey"},
-      {"position": 5, "title": "Blue"},
-      {"position": 6, "title": "California"},
-      {"position": 7, "title": "This Flight Tonight"},
-      {"position": 8, "title": "River"},
-      {"position": 9, "title": "A Case of You"},
-      {"position": 10, "title": "The Last Time I Saw Richard"}
+      {
+        "position": 1,
+        "title": "섬광"
+      },
+      {
+        "position": 2,
+        "title": "붉은 융단"
+      },
+      {
+        "position": 3,
+        "title": "입장"
+      },
+      {
+        "position": 4,
+        "title": "이제는 떳떳하다"
+      },
+      {
+        "position": 5,
+        "title": "보여줄 때"
+      },
+      {
+        "position": 6,
+        "title": "돈"
+      },
+      {
+        "position": 7,
+        "title": "대마초"
+      },
+      {
+        "position": 8,
+        "title": "막다른 길"
+      },
+      {
+        "position": 9,
+        "title": "잔상"
+      },
+      {
+        "position": 10,
+        "title": "겨울잠"
+      },
+      {
+        "position": 11,
+        "title": "자각몽"
+      },
+      {
+        "position": 12,
+        "title": "침대"
+      },
+      {
+        "position": 13,
+        "title": "책상"
+      },
+      {
+        "position": 14,
+        "title": "제자리"
+      },
+      {
+        "position": 15,
+        "title": "암전"
+      }
+    ],
+    "created_at": "2024-02-02"
+  },
+  {
+    "id": "power-andre-99",
+    "title": "POWER ANDRE 99",
+    "artist": "실리카겔",
+    "release_year": 2023,
+    "format": "CD",
+    "genre": "록",
+    "cover_path": "assets/img/covers/CD_실리카겔_POWER ANDRE 99_쥬얼.jpg",
+    "note": "사이키델릭한 신스와 묵직한 그루브가 충돌하는 실리카겔표 사운드. 라이브 단골 트랙 수록.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "On Black"
+      },
+      {
+        "position": 2,
+        "title": "Eres Tu"
+      },
+      {
+        "position": 3,
+        "title": "Juxtaposition"
+      },
+      {
+        "position": 4,
+        "title": "Realize"
+      },
+      {
+        "position": 5,
+        "title": "Gosan"
+      },
+      {
+        "position": 6,
+        "title": "Andre99"
+      },
+      {
+        "position": 7,
+        "title": "Babyface"
+      },
+      {
+        "position": 8,
+        "title": "NO PAIN"
+      },
+      {
+        "position": 9,
+        "title": "The Rim"
+      },
+      {
+        "position": 10,
+        "title": "T"
+      },
+      {
+        "position": 11,
+        "title": "Tik Tak Tok (feat. So!YoON!)"
+      },
+      {
+        "position": 12,
+        "title": "Budland"
+      },
+      {
+        "position": 13,
+        "title": "Ryudejakeiru"
+      },
+      {
+        "position": 14,
+        "title": "APEX"
+      },
+      {
+        "position": 15,
+        "title": "Ondine"
+      },
+      {
+        "position": 16,
+        "title": "Mercurial"
+      },
+      {
+        "position": 17,
+        "title": "Machineboy空"
+      },
+      {
+        "position": 18,
+        "title": "PH-1004"
+      }
+    ],
+    "created_at": "2024-02-14"
+  },
+  {
+    "id": "legend",
+    "title": "전설",
+    "artist": "잔나비",
+    "release_year": 2019,
+    "format": "CD",
+    "genre": "인디 록",
+    "cover_path": "assets/img/covers/CD_잔나비_전설_디지팩.jpg",
+    "note": "복고풍 사운드와 드라마틱한 전개가 인상적인 잔나비식 팝 록. 디지팩 한정 패키지.",
+    "is_limited": true,
+    "is_signed": false,
+    "moods": [
+      "warm",
+      "energetic",
+      "melancholic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "나의 기쁨 나의 노래 (Good Good Night) (Intro)"
+      },
+      {
+        "position": 2,
+        "title": "투게더! (TOGETHER!)"
+      },
+      {
+        "position": 3,
+        "title": "조이풀 조이풀 (joyful joyful)"
+      },
+      {
+        "position": 4,
+        "title": "거울 (mirror)"
+      },
+      {
+        "position": 5,
+        "title": "우리 애는요 (about a boy)"
+      },
+      {
+        "position": 6,
+        "title": "DOLMARO"
+      },
+      {
+        "position": 7,
+        "title": "전설 (LEGEND)"
+      },
+      {
+        "position": 8,
+        "title": "주저하는 연인들을 위해 (For Lovers Who Hesitate)"
+      },
+      {
+        "position": 9,
+        "title": "신나는 잠"
+      },
+      {
+        "position": 10,
+        "title": "나쁜 꿈 (bad dreams)"
+      },
+      {
+        "position": 11,
+        "title": "새 어둠 새 눈 (land of night)"
+      },
+      {
+        "position": 12,
+        "title": "꿈과 책과 힘과 벽 (dreams, books, power and walls)"
+      }
+    ],
+    "created_at": "2024-02-22"
+  },
+  {
+    "id": "kkung",
+    "title": "킁",
+    "artist": "C JAMM",
+    "release_year": 2019,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_C JAMM_킁_일반반.png",
+    "note": "거칠고 직설적인 라임이 살아있는 트랙. 일반반 바이닐로 소장.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "가끔 난 날 안 믿어"
+      },
+      {
+        "position": 2,
+        "title": "원래 난 이랬나"
+      },
+      {
+        "position": 3,
+        "title": "Slay"
+      },
+      {
+        "position": 4,
+        "title": "휙"
+      },
+      {
+        "position": 5,
+        "title": "끽 (feat. Yescoba)"
+      },
+      {
+        "position": 6,
+        "title": "ㅈ"
+      },
+      {
+        "position": 7,
+        "title": "샹송"
+      },
+      {
+        "position": 8,
+        "title": "코케인 러브♥ (feat. Yescoba)"
+      },
+      {
+        "position": 9,
+        "title": "약빨"
+      },
+      {
+        "position": 10,
+        "title": "메들리"
+      },
+      {
+        "position": 11,
+        "title": "포커페이스"
+      },
+      {
+        "position": 12,
+        "title": "왈"
+      }
+    ],
+    "created_at": "2024-03-02"
+  },
+  {
+    "id": "son-of-spergy",
+    "title": "Son Of Spergy",
+    "artist": "Daniel Caesar",
+    "release_year": 2025,
+    "format": "Vinyl",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/LP_Daniel Caesar_Son Of Spergy.png",
+    "note": "데뷔 초기의 거친 보컬과 가스펠적 따뜻함이 공존하는 희귀 믹스테이프반.",
+    "is_limited": true,
+    "is_signed": false,
+    "moods": [
+      "late-night",
+      "warm",
+      "melancholic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Rain Down (feat. Sampha)"
+      },
+      {
+        "position": 2,
+        "title": "Have a Baby (With Me)"
+      },
+      {
+        "position": 3,
+        "title": "Call on Me"
+      },
+      {
+        "position": 4,
+        "title": "Baby Blue (feat. Norwill Simmonds)"
+      },
+      {
+        "position": 5,
+        "title": "Root of All Evil"
+      },
+      {
+        "position": 6,
+        "title": "Who Knows"
+      },
+      {
+        "position": 7,
+        "title": "Moon (feat. Bon Iver)"
+      },
+      {
+        "position": 8,
+        "title": "Touching God (feat. Yebba & Blood Orange)"
+      },
+      {
+        "position": 9,
+        "title": "Sign of the Times"
+      },
+      {
+        "position": 10,
+        "title": "Emily's Song"
+      },
+      {
+        "position": 11,
+        "title": "No More Loving (On Women I Don't Love) (feat. 646yf4t)"
+      },
+      {
+        "position": 12,
+        "title": "Sins of the Father (feat. Bon Iver)"
+      }
+    ],
+    "created_at": "2024-03-10"
+  },
+  {
+    "id": "blonde",
+    "title": "Blonde",
+    "artist": "Frank Ocean",
+    "release_year": 2016,
+    "format": "Vinyl",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/LP_Frank Ocean_Blonde_부틀렉.png",
+    "note": "미니멀한 프로덕션 위에 떠다니는 보컬이 인상적인 명반. 부틀렉반이라 트랙 순서에 약간의 차이가 있음.",
+    "is_limited": true,
+    "is_signed": false,
+    "is_bootleg": true,
+    "moods": [
+      "late-night",
+      "melancholic",
+      "focus"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Nikes"
+      },
+      {
+        "position": 2,
+        "title": "Ivy"
+      },
+      {
+        "position": 3,
+        "title": "Pink + White"
+      },
+      {
+        "position": 4,
+        "title": "Be Yourself"
+      },
+      {
+        "position": 5,
+        "title": "Solo"
+      },
+      {
+        "position": 6,
+        "title": "Skyline To"
+      },
+      {
+        "position": 7,
+        "title": "Self Control"
+      },
+      {
+        "position": 8,
+        "title": "Good Guy"
+      },
+      {
+        "position": 9,
+        "title": "Nights"
+      },
+      {
+        "position": 10,
+        "title": "Solo (Reprise)"
+      },
+      {
+        "position": 11,
+        "title": "Pretty Sweet"
+      },
+      {
+        "position": 12,
+        "title": "Facebook Story"
+      },
+      {
+        "position": 13,
+        "title": "Close to You"
+      },
+      {
+        "position": 14,
+        "title": "White Ferrari"
+      },
+      {
+        "position": 15,
+        "title": "Seigfried"
+      },
+      {
+        "position": 16,
+        "title": "Godspeed"
+      },
+      {
+        "position": 17,
+        "title": "Futura Free"
+      }
+    ],
+    "created_at": "2024-03-18"
+  },
+  {
+    "id": "endless",
+    "title": "Endless",
+    "artist": "Frank Ocean",
+    "release_year": 2016,
+    "format": "Vinyl",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/LP_Frank ocean_ENDLESS_부틀렉.png",
+    "note": "비주얼 앨범으로 공개된 실험적인 작품. 부틀렉 2LP로 소장.",
+    "is_limited": true,
+    "is_signed": false,
+    "moods": [
+      "late-night",
+      "focus"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Device Control"
+      },
+      {
+        "position": 2,
+        "title": "At Your Best (You Are Love)"
+      },
+      {
+        "position": 3,
+        "title": "Alabama"
+      },
+      {
+        "position": 4,
+        "title": "Mine"
+      },
+      {
+        "position": 5,
+        "title": "U-N-I-T-Y"
+      },
+      {
+        "position": 6,
+        "title": "Ambience 001: \"In a Certain Way\""
+      },
+      {
+        "position": 7,
+        "title": "Commes des Garçons"
+      },
+      {
+        "position": 8,
+        "title": "Ambience 002: \"Honeybaby\""
+      },
+      {
+        "position": 9,
+        "title": "Wither"
+      },
+      {
+        "position": 10,
+        "title": "Hublots"
+      },
+      {
+        "position": 11,
+        "title": "In Here Somewhere"
+      },
+      {
+        "position": 12,
+        "title": "Slide on Me"
+      },
+      {
+        "position": 13,
+        "title": "Sideways"
+      },
+      {
+        "position": 14,
+        "title": "Florida"
+      },
+      {
+        "position": 15,
+        "title": "Deathwish (ASR)"
+      },
+      {
+        "position": 16,
+        "title": "Rushes"
+      },
+      {
+        "position": 17,
+        "title": "Rushes To"
+      },
+      {
+        "position": 18,
+        "title": "Higgs"
+      }
     ],
     "created_at": "2024-03-25"
   },
   {
-    "id": "discovery-jp-edition",
-    "title": "Discovery (Japan Edition)",
-    "artist": "Daft Punk",
-    "release_year": 2001,
-    "format": "CD",
-    "genre": "Electronic",
-    "cover_path": "assets/img/covers/temp.jpg",
-    "note": "보너스 트랙이 수록된 일본반. 프렌치 하우스의 황금기.",
+    "id": "tt",
+    "title": "ㅠㅠ",
+    "artist": "GongGongGoo009",
+    "release_year": 2022,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_GongGongGoo009_ㅠㅠ_친필사인반.png",
+    "note": "로파이한 질감과 솔직한 감정 표현이 돋보이는 인디 힙합. 친필 사인이 담긴 한정반.",
     "is_limited": true,
-    "moods": ["energetic", "warm"],
+    "is_signed": true,
+    "moods": [
+      "late-night",
+      "melancholic",
+      "rainy-day"
+    ],
     "tracks": [
-      {"position": 1, "title": "One More Time"},
-      {"position": 2, "title": "Aerodynamic"},
-      {"position": 3, "title": "Digital Love"},
-      {"position": 4, "title": "Harder, Better, Faster, Stronger"},
-      {"position": 5, "title": "Crescendolls"},
-      {"position": 6, "title": "Something About Us"},
-      {"position": 7, "title": "Face to Face"},
-      {"position": 8, "title": "Too Long"}
+      {
+        "position": 1,
+        "title": "괴물"
+      },
+      {
+        "position": 2,
+        "title": "돈 가져와"
+      },
+      {
+        "position": 3,
+        "title": "돈 가져와 2"
+      },
+      {
+        "position": 4,
+        "title": "집에서 짐"
+      },
+      {
+        "position": 5,
+        "title": "산책"
+      },
+      {
+        "position": 6,
+        "title": "나방"
+      },
+      {
+        "position": 7,
+        "title": "진화"
+      },
+      {
+        "position": 8,
+        "title": "북극곰"
+      },
+      {
+        "position": 9,
+        "title": "헤쳐모여"
+      },
+      {
+        "position": 10,
+        "title": "뒤"
+      },
+      {
+        "position": 11,
+        "title": "상담 내용"
+      },
+      {
+        "position": 12,
+        "title": "s k I t"
+      },
+      {
+        "position": 13,
+        "title": "집중"
+      },
+      {
+        "position": 14,
+        "title": "마지막처럼"
+      },
+      {
+        "position": 15,
+        "title": "ㅠㅠ"
+      }
+    ],
+    "created_at": "2024-04-01"
+  },
+  {
+    "id": "piss-in-the-wind",
+    "title": "Piss In The Wind",
+    "artist": "JOJI",
+    "release_year": 2026,
+    "format": "Vinyl",
+    "genre": "얼터너티브 팝",
+    "cover_path": "assets/img/covers/LP_JOJI_Piss In The Wind.jpg",
+    "note": "우울하면서도 묘하게 따뜻한 멜로디가 인상적인 싱글 한정 7인치반.",
+    "is_limited": true,
+    "is_signed": false,
+    "moods": [
+      "melancholic",
+      "rainy-day",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Pixelated Kisses"
+      },
+      {
+        "position": 2,
+        "title": "Cigarette"
+      },
+      {
+        "position": 3,
+        "title": "Last of a Dying Breed"
+      },
+      {
+        "position": 4,
+        "title": "LOVE YOU LESS"
+      },
+      {
+        "position": 5,
+        "title": "If It Only Gets Better"
+      },
+      {
+        "position": 6,
+        "title": "Love Me Better"
+      },
+      {
+        "position": 7,
+        "title": "Piece of You"
+      },
+      {
+        "position": 8,
+        "title": "Hotel California"
+      },
+      {
+        "position": 9,
+        "title": "Tarmac"
+      },
+      {
+        "position": 10,
+        "title": "Forehead Touch The Ground"
+      },
+      {
+        "position": 11,
+        "title": "Past Won't Leave My Bed"
+      },
+      {
+        "position": 12,
+        "title": "Fade to Black"
+      },
+      {
+        "position": 13,
+        "title": "CANT SEE SHIT IN THE CLUB"
+      },
+      {
+        "position": 14,
+        "title": "Sojourn"
+      },
+      {
+        "position": 15,
+        "title": "DYKILY"
+      },
+      {
+        "position": 16,
+        "title": "Silhouette Man"
+      },
+      {
+        "position": 17,
+        "title": "Rose Colored"
+      },
+      {
+        "position": 18,
+        "title": "Horses to Water"
+      },
+      {
+        "position": 19,
+        "title": "Strange Home"
+      },
+      {
+        "position": 20,
+        "title": "Dior"
+      }
     ],
     "created_at": "2024-04-08"
+  },
+  {
+    "id": "side-effect",
+    "title": "파급효과",
+    "artist": "Just Music",
+    "release_year": 2014,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_Just Music_파급효과.png",
+    "note": "저스트뮤직 크루의 단단한 합을 보여주는 컴필레이션. 올드스쿨한 비트와 라임이 매력.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "focus"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Intro - Welcome"
+      },
+      {
+        "position": 2,
+        "title": "인수인계"
+      },
+      {
+        "position": 3,
+        "title": "더"
+      },
+      {
+        "position": 4,
+        "title": "Just"
+      },
+      {
+        "position": 5,
+        "title": "난 앞으로만"
+      },
+      {
+        "position": 6,
+        "title": "소문"
+      },
+      {
+        "position": 7,
+        "title": "Crowd"
+      },
+      {
+        "position": 8,
+        "title": "Still Not Over II"
+      },
+      {
+        "position": 9,
+        "title": "파급효과 (Ripple Effect)"
+      },
+      {
+        "position": 10,
+        "title": "Rain Showers Remix"
+      },
+      {
+        "position": 11,
+        "title": "Still"
+      },
+      {
+        "position": 12,
+        "title": "Outro - 다음에 또 봐요"
+      },
+      {
+        "position": 13,
+        "title": "Jungle"
+      },
+      {
+        "position": 14,
+        "title": "Hongkiyoung#2"
+      }
+    ],
+    "created_at": "2024-04-15"
+  },
+  {
+    "id": "late-registration",
+    "title": "Late Registration",
+    "artist": "Kanye West",
+    "release_year": 2005,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Kanye West_Late Registration.png",
+    "note": "오케스트레이션과 샘플링을 정교하게 직조한 칸예의 두 번째 정규작.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "warm",
+      "energetic",
+      "focus"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Wake Up Mr. West"
+      },
+      {
+        "position": 2,
+        "title": "Heard 'Em Say (feat. Adam Levine)"
+      },
+      {
+        "position": 3,
+        "title": "Touch the Sky (feat. Lupe Fiasco)"
+      },
+      {
+        "position": 4,
+        "title": "Gold Digger (feat. Jamie Foxx)"
+      },
+      {
+        "position": 5,
+        "title": "Skit #1"
+      },
+      {
+        "position": 6,
+        "title": "Drive Slow (feat. Paul Wall & GLC)"
+      },
+      {
+        "position": 7,
+        "title": "My Way Home (feat. Common)"
+      },
+      {
+        "position": 8,
+        "title": "Crack Music (feat. The Game)"
+      },
+      {
+        "position": 9,
+        "title": "Roses"
+      },
+      {
+        "position": 10,
+        "title": "Bring Me Down (feat. Brandy)"
+      },
+      {
+        "position": 11,
+        "title": "Addiction"
+      },
+      {
+        "position": 12,
+        "title": "Skit #2"
+      },
+      {
+        "position": 13,
+        "title": "Diamonds from Sierra Leone (Remix) (feat. Jay-Z)"
+      },
+      {
+        "position": 14,
+        "title": "We Major (feat. Nas & Really Doe)"
+      },
+      {
+        "position": 15,
+        "title": "Skit #3"
+      },
+      {
+        "position": 16,
+        "title": "Hey Mama"
+      },
+      {
+        "position": 17,
+        "title": "Celebration"
+      },
+      {
+        "position": 18,
+        "title": "Skit #4"
+      },
+      {
+        "position": 19,
+        "title": "Gone (feat. Consequence & Cam'ron)"
+      },
+      {
+        "position": 20,
+        "title": "Diamonds from Sierra Leone"
+      },
+      {
+        "position": 21,
+        "title": "Late"
+      }
+    ],
+    "created_at": "2024-04-22"
+  },
+  {
+    "id": "mbdtf",
+    "title": "My Beautiful Dark Twisted Fantasy",
+    "artist": "Kanye West",
+    "release_year": 2010,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Kanye West_My Beautiful Dark Twisted Fantasy.png",
+    "note": "맥시멀리즘의 정점. 화려한 객원진과 대담한 프로덕션이 만든 현대 힙합의 기념비.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "late-night",
+      "warm"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Dark Fantasy"
+      },
+      {
+        "position": 2,
+        "title": "Gorgeous (feat. Kid Cudi & Raekwon)"
+      },
+      {
+        "position": 3,
+        "title": "POWER"
+      },
+      {
+        "position": 4,
+        "title": "All of the Lights (Interlude)"
+      },
+      {
+        "position": 5,
+        "title": "All of the Lights"
+      },
+      {
+        "position": 6,
+        "title": "Monster (feat. Jay-Z, Rick Ross, Nicki Minaj & Bon Iver)"
+      },
+      {
+        "position": 7,
+        "title": "So Appalled (feat. Jay-Z, Pusha T, CyHi the Prynce, Swizz Beatz & RZA)"
+      },
+      {
+        "position": 8,
+        "title": "Devil in a New Dress (feat. Rick Ross)"
+      },
+      {
+        "position": 9,
+        "title": "Runaway (feat. Pusha T)"
+      },
+      {
+        "position": 10,
+        "title": "Hell of a Life"
+      },
+      {
+        "position": 11,
+        "title": "Blame Game (feat. John Legend)"
+      },
+      {
+        "position": 12,
+        "title": "Lost in the World (feat. Bon Iver)"
+      },
+      {
+        "position": 13,
+        "title": "Who Will Survive in America"
+      }
+    ],
+    "created_at": "2024-04-29"
+  },
+  {
+    "id": "damn",
+    "title": "DAMN.",
+    "artist": "Kendrick Lamar",
+    "release_year": 2017,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Kendrick Lamar_DAMN.png",
+    "note": "신앙과 분노, 자기 회의를 오가는 서사를 빈틈없는 프로덕션에 담아낸 걸작.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "focus",
+      "melancholic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "BLOOD."
+      },
+      {
+        "position": 2,
+        "title": "DNA."
+      },
+      {
+        "position": 3,
+        "title": "YAH."
+      },
+      {
+        "position": 4,
+        "title": "ELEMENT."
+      },
+      {
+        "position": 5,
+        "title": "FEEL."
+      },
+      {
+        "position": 6,
+        "title": "LOYALTY. (feat. Rihanna)"
+      },
+      {
+        "position": 7,
+        "title": "PRIDE."
+      },
+      {
+        "position": 8,
+        "title": "HUMBLE."
+      },
+      {
+        "position": 9,
+        "title": "LUST."
+      },
+      {
+        "position": 10,
+        "title": "LOVE. (feat. Zacari)"
+      },
+      {
+        "position": 11,
+        "title": "XXX. (feat. U2)"
+      },
+      {
+        "position": 12,
+        "title": "FEAR."
+      },
+      {
+        "position": 13,
+        "title": "GOD."
+      },
+      {
+        "position": 14,
+        "title": "DUCKWORTH."
+      }
+    ],
+    "created_at": "2024-05-06"
+  },
+  {
+    "id": "gkmc",
+    "title": "good kid, m.A.A.d city",
+    "artist": "Kendrick Lamar",
+    "release_year": 2012,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Kendrick Lamar_Good kid, m.A.A.d city.jpg",
+    "note": "컴튼의 풍경을 한 편의 영화처럼 그려낸 컨셉 앨범. 서사와 사운드의 완성도가 모두 빼어나다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "focus",
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Sherane a.k.a Master Splinter's Daughter"
+      },
+      {
+        "position": 2,
+        "title": "Bitch, Don't Kill My Vibe"
+      },
+      {
+        "position": 3,
+        "title": "Backseat Freestyle"
+      },
+      {
+        "position": 4,
+        "title": "The Art of Peer Pressure"
+      },
+      {
+        "position": 5,
+        "title": "Money Trees (feat. Jay Rock)"
+      },
+      {
+        "position": 6,
+        "title": "Poetic Justice (feat. Drake)"
+      },
+      {
+        "position": 7,
+        "title": "good kid"
+      },
+      {
+        "position": 8,
+        "title": "m.A.A.d city (feat. MC Eiht)"
+      },
+      {
+        "position": 9,
+        "title": "Swimming Pools (Drank)"
+      },
+      {
+        "position": 10,
+        "title": "Sing About Me, I'm Dying of Thirst"
+      },
+      {
+        "position": 11,
+        "title": "Real (feat. Anna Wise)"
+      },
+      {
+        "position": 12,
+        "title": "Compton (feat. Dr. Dre)"
+      }
+    ],
+    "created_at": "2024-05-13"
+  },
+  {
+    "id": "illmatic",
+    "title": "Illmatic",
+    "artist": "Nas",
+    "release_year": 1994,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Nas_Illmatic.png",
+    "note": "뉴욕 거리의 풍경을 시적으로 압축한 90년대 힙합의 정수. 군더더기 없는 구성.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "focus",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "The Genesis"
+      },
+      {
+        "position": 2,
+        "title": "N.Y. State of Mind"
+      },
+      {
+        "position": 3,
+        "title": "Life's a Bitch (feat. AZ)"
+      },
+      {
+        "position": 4,
+        "title": "The World Is Yours"
+      },
+      {
+        "position": 5,
+        "title": "Halftime"
+      },
+      {
+        "position": 6,
+        "title": "Memory Lane (Sittin' in da Park)"
+      },
+      {
+        "position": 7,
+        "title": "One Love"
+      },
+      {
+        "position": 8,
+        "title": "One Time 4 Your Mind"
+      },
+      {
+        "position": 9,
+        "title": "Represent"
+      },
+      {
+        "position": 10,
+        "title": "It Ain't Hard to Tell"
+      }
+    ],
+    "created_at": "2024-05-20"
+  },
+  {
+    "id": "dark-side-of-the-moon",
+    "title": "The Dark Side of the Moon",
+    "artist": "Pink Floyd",
+    "release_year": 1973,
+    "format": "Vinyl",
+    "genre": "프로그레시브 록",
+    "cover_path": "assets/img/covers/LP_Pink Floyd_The Dark Side of the Moon.png",
+    "note": "프로그레시브 록의 정점이자 콘셉트 앨범의 교과서. 사운드의 공간감이 압도적이다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "focus",
+      "late-night",
+      "melancholic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Speak to Me"
+      },
+      {
+        "position": 2,
+        "title": "Breathe (In the Air)"
+      },
+      {
+        "position": 3,
+        "title": "On the Run"
+      },
+      {
+        "position": 4,
+        "title": "Time"
+      },
+      {
+        "position": 5,
+        "title": "The Great Gig in the Sky"
+      },
+      {
+        "position": 6,
+        "title": "Money"
+      },
+      {
+        "position": 7,
+        "title": "Us and Them"
+      },
+      {
+        "position": 8,
+        "title": "Any Colour You Like"
+      },
+      {
+        "position": 9,
+        "title": "Brain Damage"
+      },
+      {
+        "position": 10,
+        "title": "Eclipse"
+      }
+    ],
+    "created_at": "2024-05-27"
+  },
+  {
+    "id": "whole-lotta-red",
+    "title": "Whole Lotta Red",
+    "artist": "Playboi Carti",
+    "release_year": 2020,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Playboi Carti_Whole Lotta Red.png",
+    "note": "펑크적 에너지와 실험적 보컬 톤이 충돌하는 클러터코어의 출발점.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Rockstar Made"
+      },
+      {
+        "position": 2,
+        "title": "Go2DaMoon (feat. Kanye West)"
+      },
+      {
+        "position": 3,
+        "title": "Stop Breathing"
+      },
+      {
+        "position": 4,
+        "title": "Beno!"
+      },
+      {
+        "position": 5,
+        "title": "JumpOutTheHouse"
+      },
+      {
+        "position": 6,
+        "title": "M3tamorphosis (feat. Kid Cudi)"
+      },
+      {
+        "position": 7,
+        "title": "Slay3r"
+      },
+      {
+        "position": 8,
+        "title": "No Sl33p"
+      },
+      {
+        "position": 9,
+        "title": "New Tank"
+      },
+      {
+        "position": 10,
+        "title": "Teen X (feat. Future)"
+      },
+      {
+        "position": 11,
+        "title": "Meh"
+      },
+      {
+        "position": 12,
+        "title": "Vamp Anthem"
+      },
+      {
+        "position": 13,
+        "title": "New N3on"
+      },
+      {
+        "position": 14,
+        "title": "Control"
+      },
+      {
+        "position": 15,
+        "title": "Punk Monk"
+      },
+      {
+        "position": 16,
+        "title": "On That Time"
+      },
+      {
+        "position": 17,
+        "title": "King Vamp"
+      },
+      {
+        "position": 18,
+        "title": "Place"
+      },
+      {
+        "position": 19,
+        "title": "Sky"
+      },
+      {
+        "position": 20,
+        "title": "Over"
+      },
+      {
+        "position": 21,
+        "title": "ILoveUIHateU"
+      },
+      {
+        "position": 22,
+        "title": "Die4Guy"
+      },
+      {
+        "position": 23,
+        "title": "Not PLaying"
+      },
+      {
+        "position": 24,
+        "title": "F33l Lik3 Dyin"
+      }
+    ],
+    "created_at": "2024-06-03"
+  },
+  {
+    "id": "ok-computer",
+    "title": "OK Computer",
+    "artist": "Radiohead",
+    "release_year": 1997,
+    "format": "Vinyl",
+    "genre": "얼터너티브 록",
+    "cover_path": "assets/img/covers/LP_Radiohead_OK Computer.png",
+    "note": "디지털 시대의 소외와 불안을 예견한 듯한 사운드. 발매 후 수십 년이 지나도 낡지 않는다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "melancholic",
+      "focus",
+      "rainy-day"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Airbag"
+      },
+      {
+        "position": 2,
+        "title": "Paranoid Android"
+      },
+      {
+        "position": 3,
+        "title": "Subterranean Homesick Alien"
+      },
+      {
+        "position": 4,
+        "title": "Exit Music (For a Film)"
+      },
+      {
+        "position": 5,
+        "title": "Let Down"
+      },
+      {
+        "position": 6,
+        "title": "Karma Police"
+      },
+      {
+        "position": 7,
+        "title": "Fitter Happier"
+      },
+      {
+        "position": 8,
+        "title": "Electioneering"
+      },
+      {
+        "position": 9,
+        "title": "Climbing Up the Walls"
+      },
+      {
+        "position": 10,
+        "title": "No Surprises"
+      },
+      {
+        "position": 11,
+        "title": "Lucky"
+      },
+      {
+        "position": 12,
+        "title": "The Tourist"
+      }
+    ],
+    "created_at": "2024-06-10"
+  },
+  {
+    "id": "currents",
+    "title": "Currents",
+    "artist": "Tame Impala",
+    "release_year": 2015,
+    "format": "Vinyl",
+    "genre": "사이키델릭 / 신스팝",
+    "cover_path": "assets/img/covers/LP_Tame Impala_Currents.png",
+    "note": "사이키델릭 록에서 신스 팝으로의 변신을 완성한 작품. 몽환적이면서도 춤추게 만드는 그루브.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "late-night",
+      "energetic",
+      "warm"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Let It Happen"
+      },
+      {
+        "position": 2,
+        "title": "Nangs"
+      },
+      {
+        "position": 3,
+        "title": "The Moment"
+      },
+      {
+        "position": 4,
+        "title": "Yes I'm Changing"
+      },
+      {
+        "position": 5,
+        "title": "Eventually"
+      },
+      {
+        "position": 6,
+        "title": "Gossip"
+      },
+      {
+        "position": 7,
+        "title": "The Less I Know the Better"
+      },
+      {
+        "position": 8,
+        "title": "Past Life"
+      },
+      {
+        "position": 9,
+        "title": "Disciples"
+      },
+      {
+        "position": 10,
+        "title": "'Cause I'm a Man"
+      },
+      {
+        "position": 11,
+        "title": "Reality in Motion"
+      },
+      {
+        "position": 12,
+        "title": "Love/Paranoia"
+      },
+      {
+        "position": 13,
+        "title": "New Person, Same Old Mistakes"
+      }
+    ],
+    "created_at": "2024-06-17"
+  },
+  {
+    "id": "after-hours",
+    "title": "After Hours",
+    "artist": "The Weeknd",
+    "release_year": 2020,
+    "format": "Vinyl",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/LP_The Weeknd_After Hours.png",
+    "note": "80년대 신스팝 사운드와 누아르적 정서가 어우러진 위켄드의 대표작.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "late-night",
+      "energetic",
+      "melancholic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Alone Again"
+      },
+      {
+        "position": 2,
+        "title": "Too Late"
+      },
+      {
+        "position": 3,
+        "title": "Hardest to Love"
+      },
+      {
+        "position": 4,
+        "title": "Scared to Live"
+      },
+      {
+        "position": 5,
+        "title": "Snowchild"
+      },
+      {
+        "position": 6,
+        "title": "Escape from LA"
+      },
+      {
+        "position": 7,
+        "title": "Heartless"
+      },
+      {
+        "position": 8,
+        "title": "Faith"
+      },
+      {
+        "position": 9,
+        "title": "Blinding Lights"
+      },
+      {
+        "position": 10,
+        "title": "In Your Eyes"
+      },
+      {
+        "position": 11,
+        "title": "Save Your Tears"
+      },
+      {
+        "position": 12,
+        "title": "Repeat After Me (Interlude)"
+      },
+      {
+        "position": 13,
+        "title": "After Hours"
+      },
+      {
+        "position": 14,
+        "title": "Until I Bleed Out"
+      }
+    ],
+    "created_at": "2024-06-24"
+  },
+  {
+    "id": "hurry-up-tomorrow",
+    "title": "Hurry Up Tomorrow",
+    "artist": "The Weeknd",
+    "release_year": 2025,
+    "format": "Vinyl",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/LP_The Weeknd_Hurry Up Tomorrow_사인반.png",
+    "note": "위켄드 3부작의 마침표. XO Store에서 해외 직구한 한정 사인반으로 더욱 의미가 깊다.",
+    "is_limited": true,
+    "is_signed": true,
+    "moods": [
+      "late-night",
+      "melancholic",
+      "energetic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Without a Warning"
+      },
+      {
+        "position": 2,
+        "title": "Cry For Me"
+      },
+      {
+        "position": 3,
+        "title": "São Paulo"
+      },
+      {
+        "position": 4,
+        "title": "Society"
+      },
+      {
+        "position": 5,
+        "title": "Take Me Back To LA"
+      },
+      {
+        "position": 6,
+        "title": "The Abyss"
+      },
+      {
+        "position": 7,
+        "title": "Open Hearts"
+      },
+      {
+        "position": 8,
+        "title": "Timeless"
+      },
+      {
+        "position": 9,
+        "title": "Give Me Mercy"
+      },
+      {
+        "position": 10,
+        "title": "Runaway"
+      },
+      {
+        "position": 11,
+        "title": "Red Terror"
+      }
+    ],
+    "created_at": "2025-03-01"
+  },
+  {
+    "id": "thursday",
+    "title": "Thursday",
+    "artist": "The Weeknd",
+    "release_year": 2011,
+    "format": "Vinyl",
+    "genre": "R&B",
+    "cover_path": "assets/img/covers/LP_The Weeknd_Thursday Club.png",
+    "note": "트릴로지 시기의 어둡고 음습한 정서를 가장 짙게 담은 믹스테이프. 클럽 한정 발매반.",
+    "is_limited": true,
+    "is_signed": false,
+    "moods": [
+      "late-night",
+      "melancholic",
+      "rainy-day"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Lonely Star"
+      },
+      {
+        "position": 2,
+        "title": "Life of the Party"
+      },
+      {
+        "position": 3,
+        "title": "Thursday"
+      },
+      {
+        "position": 4,
+        "title": "The Zone (feat. Drake)"
+      },
+      {
+        "position": 5,
+        "title": "The Birds, Pt. 1"
+      },
+      {
+        "position": 6,
+        "title": "The Birds, Pt. 2"
+      },
+      {
+        "position": 7,
+        "title": "Gone"
+      },
+      {
+        "position": 8,
+        "title": "Rolling Stone"
+      },
+      {
+        "position": 9,
+        "title": "Heaven or Las Vegas"
+      }
+    ],
+    "created_at": "2024-07-01"
+  },
+  {
+    "id": "astroworld",
+    "title": "ASTROWORLD",
+    "artist": "Travis Scott",
+    "release_year": 2018,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Travis Scott_Astro World.png",
+    "note": "놀이공원이라는 테마 위에 사이키델릭한 트랩 사운드를 쌓아 올린 블록버스터.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "STARGAZING"
+      },
+      {
+        "position": 2,
+        "title": "CAROUSEL (feat. Frank Ocean)"
+      },
+      {
+        "position": 3,
+        "title": "SICKO MODE (feat. Drake)"
+      },
+      {
+        "position": 4,
+        "title": "R.I.P. SCREW (feat. Swae Lee)"
+      },
+      {
+        "position": 5,
+        "title": "STOP TRYING TO BE GOD (feat. Kid Cudi, Philip Bailey, James Blake & Stevie Wonder)"
+      },
+      {
+        "position": 6,
+        "title": "NO BYSTANDERS (feat. Juice WRLD & Sheck Wes)"
+      },
+      {
+        "position": 7,
+        "title": "SKELETONS (feat. Tame Impala, The Weeknd & Pharrell Williams)"
+      },
+      {
+        "position": 8,
+        "title": "WAKE UP (feat. The Weeknd)"
+      },
+      {
+        "position": 9,
+        "title": "5% TINT"
+      },
+      {
+        "position": 10,
+        "title": "NC-17 (feat. 21 Savage)"
+      },
+      {
+        "position": 11,
+        "title": "ASTROTHUNDER"
+      },
+      {
+        "position": 12,
+        "title": "YOSEMITE (feat. Gunna & Nav)"
+      },
+      {
+        "position": 13,
+        "title": "CAN'T SAY (feat. Don Toliver)"
+      },
+      {
+        "position": 14,
+        "title": "WHO? WHAT! (feat. Quavo & Takeoff)"
+      },
+      {
+        "position": 15,
+        "title": "BUTTERFLY EFFECT"
+      },
+      {
+        "position": 16,
+        "title": "HOUSTONFORNICATION"
+      },
+      {
+        "position": 17,
+        "title": "COFFEE BEAN"
+      }
+    ],
+    "created_at": "2024-07-08"
+  },
+  {
+    "id": "igor",
+    "title": "IGOR",
+    "artist": "Tyler, The Creator",
+    "release_year": 2019,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Tyler, The Creator_IGOR.png",
+    "note": "사랑의 붕괴를 한 편의 컨셉 앨범으로 완성한 작품. 빈티지 신스와 보컬 변조가 인상적.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "melancholic",
+      "warm",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "IGOR'S THEME"
+      },
+      {
+        "position": 2,
+        "title": "EARFQUAKE"
+      },
+      {
+        "position": 3,
+        "title": "I THINK"
+      },
+      {
+        "position": 4,
+        "title": "EXACTLY WHAT YOU RUN FROM YOU END UP CHASING"
+      },
+      {
+        "position": 5,
+        "title": "RUNNING OUT OF TIME"
+      },
+      {
+        "position": 6,
+        "title": "NEW MAGIC WAND"
+      },
+      {
+        "position": 7,
+        "title": "A BOY IS A GUN"
+      },
+      {
+        "position": 8,
+        "title": "PUPPET"
+      },
+      {
+        "position": 9,
+        "title": "WHAT'S GOOD"
+      },
+      {
+        "position": 10,
+        "title": "GONE, GONE / THANK YOU"
+      },
+      {
+        "position": 11,
+        "title": "I DON'T LOVE YOU ANYMORE"
+      },
+      {
+        "position": 12,
+        "title": "ARE WE STILL FRIENDS?"
+      }
+    ],
+    "created_at": "2024-07-15"
+  },
+  {
+    "id": "f1-the-album",
+    "title": "F1 The Album",
+    "artist": "Various Artists",
+    "release_year": 2025,
+    "format": "Vinyl",
+    "genre": "OST / 팝",
+    "cover_path": "assets/img/covers/LP_Various Artists_F1 The Album.png",
+    "note": "영화 〈F1〉의 사운드트랙. 다양한 아티스트의 곡이 모여 스피드와 긴장감을 표현한다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Don Toliver - Lose My Mind (feat. Doja Cat)"
+      },
+      {
+        "position": 2,
+        "title": "Dom Dolla - No Room for A Saint (feat. Nathan Nicholson)"
+      },
+      {
+        "position": 3,
+        "title": "Ed Sheeran - Drive"
+      },
+      {
+        "position": 4,
+        "title": "Tate McRae - Just Keep Watching"
+      },
+      {
+        "position": 5,
+        "title": "ROSÉ - Messy"
+      },
+      {
+        "position": 6,
+        "title": "Burna Boy - Don't Let Me Drown"
+      },
+      {
+        "position": 7,
+        "title": "Roddy Ricch - Underdog"
+      },
+      {
+        "position": 8,
+        "title": "RAYE - Grandma Calls The Boy Bad News"
+      },
+      {
+        "position": 9,
+        "title": "Chris Stapleton - Bad As I Used To Be"
+      },
+      {
+        "position": 10,
+        "title": "Myke Towers - Baja California"
+      },
+      {
+        "position": 11,
+        "title": "Tiësto & Sexyy Red - OMG!"
+      },
+      {
+        "position": 12,
+        "title": "Madison Beer - All At Once"
+      },
+      {
+        "position": 13,
+        "title": "Peggy Gou - D.A.N.C.E"
+      },
+      {
+        "position": 14,
+        "title": "PAWSA - DOUBLE C"
+      },
+      {
+        "position": 15,
+        "title": "Mr Eazi - Attention"
+      },
+      {
+        "position": 16,
+        "title": "Darkoo - Give Me Love"
+      },
+      {
+        "position": 17,
+        "title": "Obongjayar - Gasoline"
+      }
+    ],
+    "created_at": "2025-07-01"
+  },
+  {
+    "id": "bully",
+    "title": "BULLY",
+    "artist": "Ye",
+    "release_year": 2026,
+    "format": "Vinyl",
+    "genre": "산업 힙합",
+    "cover_path": "assets/img/covers/LP_Ye_BULLY.jpg",
+    "note": "베일에 싸인 채 발매된 신보. 거친 로파이 톤과 직설적인 가사가 두드러진다.",
+    "is_limited": true,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Preacher Man"
+      },
+      {
+        "position": 2,
+        "title": "Beauty And The Beast"
+      },
+      {
+        "position": 3,
+        "title": "Last Breath"
+      },
+      {
+        "position": 4,
+        "title": "White Lines"
+      },
+      {
+        "position": 5,
+        "title": "I Can't Wait"
+      },
+      {
+        "position": 6,
+        "title": "Bully"
+      },
+      {
+        "position": 7,
+        "title": "All The Love"
+      },
+      {
+        "position": 8,
+        "title": "This One Here"
+      },
+      {
+        "position": 9,
+        "title": "Highs And Lows"
+      },
+      {
+        "position": 10,
+        "title": "Mission Control (Physical Only)"
+      },
+      {
+        "position": 11,
+        "title": "Circles"
+      },
+      {
+        "position": 12,
+        "title": "Damn"
+      },
+      {
+        "position": 13,
+        "title": "Losing Your Mind (Physical Only)"
+      }
+    ],
+    "created_at": "2025-04-12"
+  },
+  {
+    "id": "donda-2",
+    "title": "DONDA 2",
+    "artist": "Ye",
+    "release_year": 2022,
+    "format": "Vinyl",
+    "genre": "힙합",
+    "cover_path": "assets/img/covers/LP_Ye_DONDA 2_부틀렉.png",
+    "note": "스턴 디스크 플레이어로만 공개됐던 화제작의 부틀렉반. 거칠고 가공되지 않은 질감이 매력.",
+    "is_limited": true,
+    "is_signed": false,
+    "is_bootleg": true,
+    "moods": [
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "True Love"
+      },
+      {
+        "position": 2,
+        "title": "Broken Road"
+      },
+      {
+        "position": 3,
+        "title": "Get Lost"
+      },
+      {
+        "position": 4,
+        "title": "Too Easy"
+      },
+      {
+        "position": 5,
+        "title": "Flowers"
+      },
+      {
+        "position": 6,
+        "title": "Security"
+      },
+      {
+        "position": 7,
+        "title": "We Did It Kid"
+      },
+      {
+        "position": 8,
+        "title": "Pablo"
+      },
+      {
+        "position": 9,
+        "title": "Louie Bags"
+      },
+      {
+        "position": 10,
+        "title": "Happy"
+      },
+      {
+        "position": 11,
+        "title": "Sci Fi"
+      },
+      {
+        "position": 12,
+        "title": "Selfish"
+      },
+      {
+        "position": 13,
+        "title": "Lord Lift Me Up"
+      },
+      {
+        "position": 14,
+        "title": "City Of Gods"
+      },
+      {
+        "position": 15,
+        "title": "First Time In A Long Time"
+      },
+      {
+        "position": 16,
+        "title": "Eazy"
+      }
+    ],
+    "created_at": "2024-08-05"
+  },
+  {
+    "id": "nowitzki",
+    "title": "NOWITZKI",
+    "artist": "빈지노",
+    "release_year": 2023,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_빈지노_NOWITZKI.png",
+    "note": "위트와 진정성을 오가는 빈지노 특유의 화법이 돋보이는 솔로 정규작.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "warm"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Stinky Kiss (Intro)"
+      },
+      {
+        "position": 2,
+        "title": "Monet"
+      },
+      {
+        "position": 3,
+        "title": "침대에서/막걸리"
+      },
+      {
+        "position": 4,
+        "title": "여행 Again (Feat. Cautious Clay)"
+      },
+      {
+        "position": 5,
+        "title": "Dope As (Interlude)"
+      },
+      {
+        "position": 6,
+        "title": "Coca Cola Red (Feat. Oygli)"
+      },
+      {
+        "position": 7,
+        "title": "990 (Feat. Kim Ximya)"
+      },
+      {
+        "position": 8,
+        "title": "Lemon"
+      },
+      {
+        "position": 9,
+        "title": "바보같이 (Feat. Y2K92)"
+      },
+      {
+        "position": 10,
+        "title": "Trippy (Feat. Lance Skiiiwalker)"
+      },
+      {
+        "position": 11,
+        "title": "Crime (Feat. Bek Hyunjin, 250)"
+      },
+      {
+        "position": 12,
+        "title": "Camp"
+      },
+      {
+        "position": 13,
+        "title": "Sanso (Interlude)"
+      },
+      {
+        "position": 14,
+        "title": "Change"
+      },
+      {
+        "position": 15,
+        "title": "단 하루"
+      },
+      {
+        "position": 16,
+        "title": "Sandman"
+      },
+      {
+        "position": 17,
+        "title": "Radio"
+      },
+      {
+        "position": 18,
+        "title": "Gym"
+      },
+      {
+        "position": 19,
+        "title": "Bonus Track"
+      }
+    ],
+    "created_at": "2024-08-12"
+  },
+  {
+    "id": "alive-4",
+    "title": "살아숨셔 4",
+    "artist": "염따",
+    "release_year": 2025,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_염따_살아숨셔 4.png",
+    "note": "시리즈의 네 번째 작품. 능청스러운 톤과 미니멀한 비트의 조합이 중독적이다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "energetic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "갓생"
+      },
+      {
+        "position": 2,
+        "title": "윽!"
+      },
+      {
+        "position": 3,
+        "title": "더콰이엇"
+      },
+      {
+        "position": 4,
+        "title": "IE러니"
+      },
+      {
+        "position": 5,
+        "title": "ㄷ.R.E.A.M"
+      },
+      {
+        "position": 6,
+        "title": "순정 2025"
+      },
+      {
+        "position": 7,
+        "title": "sWing"
+      },
+      {
+        "position": 8,
+        "title": "Y-3"
+      },
+      {
+        "position": 9,
+        "title": "그때 우리는"
+      },
+      {
+        "position": 10,
+        "title": "마"
+      }
+    ],
+    "created_at": "2024-08-19"
+  },
+  {
+    "id": "the-anecdote",
+    "title": "The Anecdote",
+    "artist": "이센스",
+    "release_year": 2015,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_이센스_The Anecdote.png",
+    "note": "출소 후 발표한 솔로 데뷔작. 무게감 있는 가사와 단단한 톤이 깊은 인상을 남긴다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "focus",
+      "melancholic",
+      "late-night"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "주사위"
+      },
+      {
+        "position": 2,
+        "title": "A-G-E"
+      },
+      {
+        "position": 3,
+        "title": "Writer's Block"
+      },
+      {
+        "position": 4,
+        "title": "Next Level"
+      },
+      {
+        "position": 5,
+        "title": "삐끗"
+      },
+      {
+        "position": 6,
+        "title": "10.18.14"
+      },
+      {
+        "position": 7,
+        "title": "The Anecdote"
+      },
+      {
+        "position": 8,
+        "title": "Back In Time"
+      },
+      {
+        "position": 9,
+        "title": "Tick Tock (feat. Kim Ximya)"
+      },
+      {
+        "position": 10,
+        "title": "Unknown Verses"
+      }
+    ],
+    "created_at": "2024-08-26"
+  },
+  {
+    "id": "beige",
+    "title": "BEIGE",
+    "artist": "키드밀리",
+    "release_year": 2023,
+    "format": "Vinyl",
+    "genre": "한국 힙합",
+    "cover_path": "assets/img/covers/LP_키드밀리_BEIGE_사인반.png",
+    "note": "몽환적인 신스와 로파이 비트가 어우러진 키드밀리표 사운드. 직접 사인을 받은 소장품.",
+    "is_limited": true,
+    "is_signed": true,
+    "moods": [
+      "late-night",
+      "warm",
+      "melancholic"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "ron interlude"
+      },
+      {
+        "position": 2,
+        "title": "BEIGE theme"
+      },
+      {
+        "position": 3,
+        "title": "HONDA! (feat. Raf Sandou, wnsday)"
+      },
+      {
+        "position": 4,
+        "title": "Simple Poem (feat. Rad Museum)"
+      },
+      {
+        "position": 5,
+        "title": "pH-1 interlude"
+      },
+      {
+        "position": 6,
+        "title": "Still friend? (feat. pH-1)"
+      },
+      {
+        "position": 7,
+        "title": "R.I.P (feat. B.I)"
+      },
+      {
+        "position": 8,
+        "title": "Test me?"
+      },
+      {
+        "position": 9,
+        "title": "Leellamarz interlude"
+      },
+      {
+        "position": 10,
+        "title": "추월"
+      },
+      {
+        "position": 11,
+        "title": "BNC (feat. 식케이, 우원재)"
+      },
+      {
+        "position": 12,
+        "title": "Coupe! (feat. lobonabeat!)"
+      },
+      {
+        "position": 13,
+        "title": "Lost and found freestyle"
+      },
+      {
+        "position": 14,
+        "title": "Let Me Down! (feat. Raf Sandou)"
+      },
+      {
+        "position": 15,
+        "title": "25 (feat. 양홍원)"
+      },
+      {
+        "position": 16,
+        "title": "Kid milli interlude"
+      },
+      {
+        "position": 17,
+        "title": "BORA"
+      }
+    ],
+    "created_at": "2024-09-02"
+  },
+  {
+    "id": "hyukoh-23",
+    "title": "23",
+    "artist": "혁오",
+    "release_year": 2017,
+    "format": "Vinyl",
+    "genre": "인디 록",
+    "cover_path": "assets/img/covers/LP_혁오_23.png",
+    "note": "잔잔하지만 묵직한 인상을 남기는 혁오의 데뷔 EP. 풋풋함과 완성도를 동시에 갖췄다.",
+    "is_limited": false,
+    "is_signed": false,
+    "moods": [
+      "warm",
+      "melancholic",
+      "rainy-day"
+    ],
+    "tracks": [
+      {
+        "position": 1,
+        "title": "Burning Youth"
+      },
+      {
+        "position": 2,
+        "title": "Tokyo Inn"
+      },
+      {
+        "position": 3,
+        "title": "가죽자켓 (Leather Jacket)"
+      },
+      {
+        "position": 4,
+        "title": "TOMBOY"
+      },
+      {
+        "position": 5,
+        "title": "2002WorldCup"
+      },
+      {
+        "position": 6,
+        "title": "Jesus lived in a motel room"
+      },
+      {
+        "position": 7,
+        "title": "Wanli 万里"
+      },
+      {
+        "position": 8,
+        "title": "Die alone"
+      },
+      {
+        "position": 9,
+        "title": "지정석"
+      },
+      {
+        "position": 10,
+        "title": "Simon"
+      },
+      {
+        "position": 11,
+        "title": "Paul"
+      },
+      {
+        "position": 12,
+        "title": "Surf boy"
+      }
+    ],
+    "created_at": "2024-09-09"
   }
 ]

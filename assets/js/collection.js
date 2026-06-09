@@ -41,15 +41,21 @@
 
     grid.innerHTML = list
       .map(
-        (album) => `
+        (album) => {
+          const badges = [];
+          if (album.is_signed)   badges.push('<span class="badge-signed">사인반</span>');
+          if (album.is_bootleg)  badges.push('<span class="badge-bootleg">부틀렉</span>');
+          const badgeGroup = badges.length ? `<div class="badge-group">${badges.join('')}</div>` : '';
+
+          return `
       <a class="card" href="album.html?id=${escapeHTML(album.id)}" aria-label="${escapeHTML(album.artist)} — ${escapeHTML(album.title)}">
         <div class="card__cover">
-          ${album.is_limited ? '<span class="badge-limited">한정반</span>' : ''}
           <img data-src="${escapeHTML(album.cover_path)}" src="assets/img/ui/placeholder.svg" alt="${escapeHTML(album.title)} 자켓" loading="lazy">
         </div>
         <div class="card__body">
           <p class="card__artist">${escapeHTML(album.artist)}</p>
           <h3 class="card__title">${escapeHTML(album.title)}</h3>
+          ${badgeGroup}
           <div class="card__meta">
             <span>${escapeHTML(String(album.release_year))}</span>
             <span>${escapeHTML(album.format)}</span>
@@ -57,7 +63,8 @@
           </div>
         </div>
       </a>
-    `
+    `;
+        }
       )
       .join('');
 
@@ -82,7 +89,7 @@
     if (key === 'release_year') {
       return vals.map(Number).sort((a, b) => b - a);
     }
-    return vals.sort((a, b) => String(a).localeCompare(String(b)));
+    return vals.sort((a, b) => String(a).localeCompare(String(b), 'en'));
   }
 
   /**
@@ -130,27 +137,45 @@
   }
 
   /* --------------------------------------------------------
+     연도 구간 필터 (고정 버킷)
+     -------------------------------------------------------- */
+  const YEAR_BUCKETS = [
+    { label: '~1990',   test: (y) => y <= 1990 },
+    { label: '2010년대', test: (y) => y >= 2010 && y <= 2019 },
+    { label: '2020년대', test: (y) => y >= 2020 },
+  ];
+
+  function buildYearFilter() {
+    const container = document.querySelector('[data-filter-group="year"]');
+    if (!container) return;
+
+    const pills = [
+      `<button type="button" class="filter-pill active" data-filter-value="all">전체</button>`,
+      ...YEAR_BUCKETS.map(
+        (b) => `<button type="button" class="filter-pill" data-filter-value="${escapeHTML(b.label)}">${escapeHTML(b.label)}</button>`
+      )
+    ];
+    container.innerHTML = pills.join('');
+
+    container.addEventListener('click', (ev) => {
+      const pill = ev.target.closest('.filter-pill');
+      if (!pill || !container.contains(pill)) return;
+      activeFilters.year = pill.dataset.filterValue;
+      container.querySelectorAll('.filter-pill').forEach((p) => p.classList.toggle('active', p === pill));
+      applyFilters();
+    });
+  }
+
+  /* --------------------------------------------------------
      3. 필터 적용 — 교집합(AND)으로 거른 뒤 재렌더
      -------------------------------------------------------- */
   function applyFilters() {
     const filtered = albums.filter((album) => {
-      if (
-        activeFilters.genre !== 'all' &&
-        album.genre !== activeFilters.genre
-      ) {
-        return false;
-      }
-      if (
-        activeFilters.format !== 'all' &&
-        album.format !== activeFilters.format
-      ) {
-        return false;
-      }
-      if (
-        activeFilters.year !== 'all' &&
-        String(album.release_year) !== String(activeFilters.year)
-      ) {
-        return false;
+      if (activeFilters.genre !== 'all' && album.genre !== activeFilters.genre) return false;
+      if (activeFilters.format !== 'all' && album.format !== activeFilters.format) return false;
+      if (activeFilters.year !== 'all') {
+        const bucket = YEAR_BUCKETS.find((b) => b.label === activeFilters.year);
+        if (!bucket || !bucket.test(Number(album.release_year))) return false;
       }
       return true;
     });
@@ -163,7 +188,7 @@
      -------------------------------------------------------- */
   buildFilterGroup('genre', 'genre');
   buildFilterGroup('format', 'format');
-  buildFilterGroup('year', 'release_year');
+  buildYearFilter();
 
   renderCards(albums);
 })();

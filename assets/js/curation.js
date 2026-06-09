@@ -19,17 +19,25 @@
 
   const MAX_CARDS = 6;
 
+  /* Fisher-Yates 셔플 — 원본 배열 복사 후 무작위 순서 반환 */
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   /* --------------------------------------------------------
      1. 무드 → 대표 앨범 매핑
-     같은 무드가 여러 앨범에 있으면 첫 번째 앨범을 대표로 사용.
+     앨범 배열을 먼저 셔플해 무드당 뽑히는 앨범이 매 로드마다 달라짐.
      moods 가 비어있는 앨범은 genre 를 대체 레이블로 사용.
-     Map 으로 삽입 순서를 보존(앨범 등장 순서대로 무드 노출).
      -------------------------------------------------------- */
   function buildCuration(list) {
     const moodMap = new Map(); // mood(label) → album
 
-    list.forEach((album) => {
-      // moods 가 배열이고 값이 있으면 그대로, 없으면 genre 단일 레이블로 폴백
+    shuffle(list).forEach((album) => {
       const labels =
         Array.isArray(album.moods) && album.moods.length
           ? album.moods
@@ -39,15 +47,14 @@
 
       labels.forEach((label) => {
         if (label == null || label === '') return;
-        // 같은 무드는 첫 번째 앨범만 등록 (이미 있으면 건너뜀)
         if (!moodMap.has(label)) {
           moodMap.set(label, album);
         }
       });
     });
 
-    // 최대 MAX_CARDS 개로 제한
-    return [...moodMap.entries()].slice(0, MAX_CARDS);
+    // 최대 MAX_CARDS 개 — 순서도 셔플해 카드 배치 자체도 변화
+    return shuffle([...moodMap.entries()]).slice(0, MAX_CARDS);
   }
 
   /* --------------------------------------------------------
@@ -70,7 +77,6 @@
         return `
       <a class="curation-card" href="album.html?id=${escapeHTML(album.id)}" aria-label="${escapeHTML(mood)} — ${escapeHTML(album.title)}, ${escapeHTML(album.artist)}">
         <div class="card__cover">
-          ${album.is_limited ? '<span class="badge-limited">한정반</span>' : ''}
           <img data-src="${escapeHTML(cover)}" src="assets/img/ui/placeholder.svg" alt="${escapeHTML(album.title)} 자켓" loading="lazy">
         </div>
         <div class="curation-card__body">

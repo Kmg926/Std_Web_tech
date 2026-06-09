@@ -89,8 +89,16 @@ function setActiveNav() {
    data-src 가 있는 <img> 를 뷰포트 근처에서 실제 로드.
    IntersectionObserver 미지원 환경에서는 즉시 로드 폴백.
    ---------------------------------------------------------- */
+// 페이지 부트스트랩과 각 페이지 스크립트가 렌더 후 모두 initLazyLoad()를
+// 부르기 때문에, 옵저버를 매번 새로 만들면 같은 이미지를 두 옵저버가
+// 동시에 관찰하게 된다 — 첫 콜백이 data-src 를 지운 뒤 두 번째 콜백이
+// undefined 를 src 에 대입해 이미지가 깨지는 레이스가 생긴다.
+// 옵저버를 하나만 만들어 재사용하고, 이미 등록한 이미지는
+// data-lazy-observed 로 표시해 다시 관찰하지 않도록 한다.
+let lazyObserver = null;
+
 function initLazyLoad() {
-  const imgs = document.querySelectorAll('img[data-src]');
+  const imgs = document.querySelectorAll('img[data-src]:not([data-lazy-observed])');
   if (!imgs.length) return;
 
   // 폴백: IO 미지원이면 즉시 로드
@@ -102,20 +110,25 @@ function initLazyLoad() {
     return;
   }
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.src = e.target.dataset.src;
-          e.target.removeAttribute('data-src');
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { rootMargin: '200px' }
-  );
+  if (!lazyObserver) {
+    lazyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.src = e.target.dataset.src;
+            e.target.removeAttribute('data-src');
+            lazyObserver.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: '200px' }
+    );
+  }
 
-  imgs.forEach((img) => io.observe(img));
+  imgs.forEach((img) => {
+    img.setAttribute('data-lazy-observed', '');
+    lazyObserver.observe(img);
+  });
 }
 
 /* ----------------------------------------------------------

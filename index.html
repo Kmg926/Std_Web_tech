@@ -16,15 +16,15 @@
 <body>
   <div id="navbar-placeholder"></div>
 
-  <div class="container">
-    <div class="main-layout">
+  <div class="main-layout">
 
-      <!-- 좌측 사이드바 -->
+    <!-- 좌측 사이드바 -->
       <aside class="sidebar" aria-label="사이드바">
         <div class="sidebar__intro">
           <p class="sidebar__site-name">SLEEVE</p>
           <p class="sidebar__tagline">바이닐 아카이브</p>
           <p class="sidebar__desc">내가 모은 LP·CD와 직접 만든 자켓을 기록하는 공간.</p>
+          <img class="sidebar__hero-img" src="assets/img/covers/LP.png" alt="LP 레코드" loading="lazy">
         </div>
         <div class="sidebar__recent">
           <p class="sidebar__section-label">최근 추가된 앨범</p>
@@ -44,7 +44,6 @@
         </div>
       </main>
 
-    </div>
   </div>
 
   <div id="footer-placeholder"></div>
@@ -59,6 +58,12 @@
       const sidebarEl = document.getElementById('sidebarAlbums');
       const feedEl    = document.getElementById('feedPosts');
 
+      // 카드 제목은 한 줄로 통일 — 31자를 넘으면 말줄임표(…)로 잘라
+      // 모든 카드의 제목 줄 수(=자켓 시작 y좌표)가 항상 같아지게 한다.
+      const TITLE_MAX = 31;
+      const truncateTitle = (title) =>
+        title.length > TITLE_MAX ? `${title.slice(0, TITLE_MAX)}…` : title;
+
       const albums = await SLEEVE.loadAlbums();
       const sorted = albums
         .slice()
@@ -67,9 +72,6 @@
       /* ---------- 사이드바: 최근 7개 ---------- */
       if (sorted.length) {
         sidebarEl.innerHTML = sorted.slice(0, 7).map((a) => {
-          const limitedDot = a.is_limited
-            ? ' <span class="sidebar__limited-dot" aria-hidden="true">&bull;</span>'
-            : '';
           return `
           <li class="sidebar__list-item">
             <a href="album.html?id=${e(a.id)}" class="sidebar__album-link">
@@ -79,7 +81,7 @@
                    onerror="${onerr}"
                    loading="lazy">
               <span class="sidebar__album-info">
-                <span class="sidebar__album-title">${e(a.title)}${limitedDot}</span>
+                <span class="sidebar__album-title">${e(a.title)}</span>
                 <span class="sidebar__album-artist">${e(a.artist)}</span>
                 <span class="sidebar__album-meta">${e(a.format)} &middot; ${e(String(a.release_year))}</span>
               </span>
@@ -93,25 +95,26 @@
       /* ---------- 메인 피드 ---------- */
       if (sorted.length) {
         feedEl.innerHTML = sorted.map((a) => {
-          // 감상평 3줄 분량(~200자) 미리보기
+          // 감상평 2줄 미리보기 — 칸(p)과 line-clamp 텍스트(span)를 분리해
+          // 칸 높이는 항상 2줄로 고정, 넘치는 텍스트만 "…" 처리
           const rawNote = a.note ? String(a.note).trim() : '';
           const excerptHTML = rawNote
-            ? `<p class="post__excerpt">${e(rawNote)}</p>`
+            ? `<p class="post__excerpt"><span class="post__excerpt-text">${e(rawNote)}</span></p>`
             : '';
 
-          const limitedBadge = a.is_limited
-            ? '<span class="badge-limited">한정반</span>'
-            : '';
+          // 포맷 표기: 데이터의 "Vinyl"을 진열용 약칭 "LP"로 보여준다(데이터 값 자체는 보존)
+          const formatLabel = a.format === 'Vinyl' ? 'LP' : a.format;
 
           return `
             <article class="post">
               <header class="post__header">
                 <h2 class="post__title">
-                  <a href="album.html?id=${e(a.id)}">${e(a.title)}</a>
+                  <a href="album.html?id=${e(a.id)}">${e(truncateTitle(a.title))}</a>
                 </h2>
                 <p class="post__meta">
                   <span>${e(a.artist)}</span>
                   <span>${e(String(a.release_year))}</span>
+                  <span>${e(formatLabel)}</span>
                 </p>
               </header>
 
@@ -125,15 +128,6 @@
 
               <div class="post__body">
                 ${excerptHTML}
-                <div class="post__footer">
-                  <a href="album.html?id=${e(a.id)}" class="post__more" tabindex="0">
-                    자세히 보기
-                  </a>
-                  <div class="post__tags">
-                    <span class="tag">${e(a.genre)}</span>
-                    ${limitedBadge}
-                  </div>
-                </div>
               </div>
             </article>`;
         }).join('');
