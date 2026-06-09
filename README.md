@@ -24,6 +24,12 @@ LP·CD 컬렉션과 직접 만든 자켓 디자인을 기록하고 전시하는 
 
 ## Tech Stack
 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white)
+![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=flat-square&logo=google&logoColor=white)
+
 | 구분 | 사용 기술 |
 | --- | --- |
 | Frontend | HTML5, CSS3, Vanilla JavaScript |
