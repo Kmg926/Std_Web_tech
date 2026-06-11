@@ -14,7 +14,8 @@
 
   // 현재 활성 필터 상태. 'all' 은 해당 그룹 미적용.
   const activeFilters = {
-    genre: 'all',
+    genreCategory: 'all', // 대분류 (R&B / 록 / 힙합 / 팝 ...)
+    genreSub: 'all',      // 대분류 안의 세부 장르
     format: 'all',
     year: 'all'
   };
@@ -137,6 +138,120 @@
   }
 
   /* --------------------------------------------------------
+     장르 대분류 필터
+     세부 장르(예: 한국 힙합, 산업 힙합)를 4개 대분류(R&B / 록 / 힙합 / 팝)로
+     묶어 1차로 보여주고, 대분류를 클릭하면 그 안의 세부 장르 pill 행이
+     나타나 추가로 좁힐 수 있게 한다. 세부 장르가 1개뿐인 대분류는
+     세부 행을 표시하지 않는다.
+     -------------------------------------------------------- */
+  const GENRE_CATEGORY_ORDER = ['R&B', '록', '힙합', '팝'];
+
+  function genreCategoryOf(genre) {
+    if (genre.includes('힙합')) return '힙합';
+    if (genre.includes('록')) return '록';
+    if (genre.includes('R&B')) return 'R&B';
+    if (genre.includes('팝')) return '팝';
+    return genre;
+  }
+
+  function buildGenreGroups() {
+    const groups = new Map();
+    sortedValues('genre').forEach((g) => {
+      const cat = genreCategoryOf(g);
+      if (!groups.has(cat)) groups.set(cat, []);
+      groups.get(cat).push(g);
+    });
+    return groups;
+  }
+
+  function buildGenreFilter() {
+    const container = document.querySelector('[data-filter-group="genre"]');
+    const subContainer = document.querySelector('[data-filter-group="genre-sub"]');
+    const subGroup = document.getElementById('genreSubGroup');
+    if (!container) return;
+
+    const genreGroups = buildGenreGroups();
+
+    // 지정된 순서(R&B/록/힙합/팝) 우선, 그 외 카테고리는 사전순으로 뒤에 추가
+    const categories = [
+      ...GENRE_CATEGORY_ORDER.filter((c) => genreGroups.has(c)),
+      ...[...genreGroups.keys()]
+        .filter((c) => !GENRE_CATEGORY_ORDER.includes(c))
+        .sort((a, b) => a.localeCompare(b, 'en'))
+    ];
+
+    const pills = [
+      `<button type="button" class="filter-pill active" data-filter-value="all">전체</button>`,
+      ...categories.map(
+        (c) =>
+          `<button type="button" class="filter-pill" data-filter-value="${escapeHTML(c)}">${escapeHTML(c)}</button>`
+      )
+    ];
+    container.innerHTML = pills.join('');
+
+    // 대분류 안의 세부 장르 pill 행을 채우거나 숨긴다.
+    function showSubGenres(category) {
+      if (!subContainer || !subGroup) return;
+
+      const subs = genreGroups.get(category) || [];
+      if (subs.length <= 1) {
+        subGroup.hidden = true;
+        subContainer.innerHTML = '';
+        return;
+      }
+
+      const subPills = [
+        `<button type="button" class="filter-pill active" data-filter-value="all">전체</button>`,
+        ...subs.map(
+          (g) =>
+            `<button type="button" class="filter-pill" data-filter-value="${escapeHTML(g)}">${escapeHTML(g)}</button>`
+        )
+      ];
+      subContainer.innerHTML = subPills.join('');
+      subGroup.hidden = false;
+    }
+
+    // 대분류 클릭
+    container.addEventListener('click', (e) => {
+      const pill = e.target.closest('.filter-pill');
+      if (!pill || !container.contains(pill)) return;
+
+      const value = pill.dataset.filterValue;
+      activeFilters.genreCategory = value;
+      activeFilters.genreSub = 'all';
+
+      container
+        .querySelectorAll('.filter-pill')
+        .forEach((p) => p.classList.toggle('active', p === pill));
+
+      if (value === 'all') {
+        if (subGroup) subGroup.hidden = true;
+        if (subContainer) subContainer.innerHTML = '';
+      } else {
+        showSubGenres(value);
+      }
+
+      applyFilters();
+    });
+
+    // 세부 장르 클릭 (이벤트 위임 — 컨테이너는 항상 존재, 내용만 갱신됨)
+    if (subContainer) {
+      subContainer.addEventListener('click', (e) => {
+        const pill = e.target.closest('.filter-pill');
+        if (!pill || !subContainer.contains(pill)) return;
+
+        activeFilters.genreSub = pill.dataset.filterValue;
+
+        subContainer
+          .querySelectorAll('.filter-pill')
+          .forEach((p) => p.classList.toggle('active', p === pill));
+
+        applyFilters();
+      });
+    }
+  }
+
+  /* --------------------------------------------------------
      연도 구간 필터 (고정 버킷)
      -------------------------------------------------------- */
   const YEAR_BUCKETS = [
@@ -171,7 +286,10 @@
      -------------------------------------------------------- */
   function applyFilters() {
     const filtered = albums.filter((album) => {
-      if (activeFilters.genre !== 'all' && album.genre !== activeFilters.genre) return false;
+      if (activeFilters.genreCategory !== 'all') {
+        if (genreCategoryOf(album.genre) !== activeFilters.genreCategory) return false;
+        if (activeFilters.genreSub !== 'all' && album.genre !== activeFilters.genreSub) return false;
+      }
       if (activeFilters.format !== 'all' && album.format !== activeFilters.format) return false;
       if (activeFilters.year !== 'all') {
         const bucket = YEAR_BUCKETS.find((b) => b.label === activeFilters.year);
@@ -186,7 +304,7 @@
   /* --------------------------------------------------------
      초기화
      -------------------------------------------------------- */
-  buildFilterGroup('genre', 'genre');
+  buildGenreFilter();
   buildFilterGroup('format', 'format');
   buildYearFilter();
 
