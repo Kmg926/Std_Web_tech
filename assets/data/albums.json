@@ -693,6 +693,7 @@
     "note": "비주얼 앨범으로 공개된 실험적인 작품. 부틀렉 2LP로 소장.",
     "is_limited": true,
     "is_signed": false,
+    "is_bootleg": true,
     "moods": [
       "late-night",
       "focus"
