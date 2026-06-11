@@ -25,7 +25,7 @@
         </header>
         <p class="text-muted">직접 제작한 자켓·바이닐 디자인 포트폴리오</p>
 
-        <div class="grid grid--3" id="designGrid"></div>
+        <div class="design-portfolio" id="designGrid"></div>
         <p class="empty-state" id="designEmpty" hidden>등록된 디자인이 없습니다.</p>
       </div>
     </section>
@@ -43,17 +43,21 @@
 
       if (!designs.length) { empty.hidden = false; return; }
 
-      grid.innerHTML = designs.map((d) => `
-        <a class="card" href="design.html?id=${e(d.id)}">
-          <div class="card__cover">
+      grid.innerHTML = designs.map((d, i) => `
+        <a class="design-portfolio__item" href="design.html?id=${e(d.id)}">
+          <div class="design-portfolio__image">
             <img data-src="${e(d.thumb_path)}" src="assets/img/ui/placeholder.svg"
                  alt="${e(d.title)} 디자인 썸네일" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
           </div>
-          <div class="card__body">
-            <h3 class="card__title">${e(d.title)}</h3>
-            <p class="card__meta">${e(d.tools.join(', '))}</p>
-            <p class="card__meta">${e(d.created_at.slice(0, 7).replace('-', '.'))}</p>
+          <div class="design-portfolio__body">
+            <span class="design-portfolio__index">Design ${String(i + 1).padStart(2, '0')}</span>
+            <h3 class="design-portfolio__title">${e(d.title)}</h3>
+            <div class="design-portfolio__tools">
+              ${d.tools.map((t) => `<span class="tag">${e(t)}</span>`).join('')}
+            </div>
+            <p class="design-portfolio__intent"><span class="design-portfolio__intent-text">${e(d.intent)}</span></p>
+            <p class="design-portfolio__date">${e(d.created_at.slice(0, 7).replace('-', '.'))}</p>
           </div>
         </a>
       `).join('');
