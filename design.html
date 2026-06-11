@@ -75,9 +75,6 @@
         </div>
         <div class="design-meta">
           <h1>${e(design.title)}</h1>
-          <div class="design-tools">
-            ${design.tools.map((t) => `<span class="tag">${e(t)}</span>`).join('')}
-          </div>
           <p class="design-date">${formatMonth(design.created_at)}</p>
         </div>
         <div class="design-text">

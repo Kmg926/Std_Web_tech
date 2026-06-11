@@ -53,9 +53,6 @@
           <div class="design-portfolio__body">
             <span class="design-portfolio__index">Design ${String(i + 1).padStart(2, '0')}</span>
             <h3 class="design-portfolio__title">${e(d.title)}</h3>
-            <div class="design-portfolio__tools">
-              ${d.tools.map((t) => `<span class="tag">${e(t)}</span>`).join('')}
-            </div>
             <p class="design-portfolio__intent"><span class="design-portfolio__intent-text">${e(d.intent)}</span></p>
             <p class="design-portfolio__date">${e(d.created_at.slice(0, 7).replace('-', '.'))}</p>
           </div>
