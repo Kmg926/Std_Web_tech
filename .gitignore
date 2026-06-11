@@ -1,6 +1,2 @@
-﻿assets/img/covers/*
-assets/img/designs/*
-!assets/img/covers/.gitkeep
-!assets/img/designs/.gitkeep
-.env
+﻿.env
 *.log
