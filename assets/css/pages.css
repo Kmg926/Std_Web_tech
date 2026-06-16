@@ -493,7 +493,7 @@
 
 /* ============================ Curation ============================ */
 .curation-criterion {
-  font-size: 0.82rem;
+  font-size: 1.64rem;
   color: var(--muted);
   letter-spacing: 0.03em;
   margin-top: calc(-1 * var(--space-2));
