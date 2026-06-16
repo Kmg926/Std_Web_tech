@@ -497,6 +497,7 @@
   color: var(--muted);
   letter-spacing: 0.03em;
   margin-top: calc(-1 * var(--space-2));
+  margin-bottom: var(--space-7);
 }
 
 .curation-section {
