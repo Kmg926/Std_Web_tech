@@ -1,1 +1,0 @@
-- [SLEEVE CI/CD Setup](project-sleeve-cicd.md) — FTP deploy to InfinityFree via SamKirkland action, secrets FTP_SERVER/USERNAME/PASSWORD, PHP 8.1 lint gate

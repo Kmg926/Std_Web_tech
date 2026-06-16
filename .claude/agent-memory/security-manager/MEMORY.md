@@ -1,4 +1,0 @@
-- [Project context](project_sleeve_archive.md) — SLEEVE is a read-only PHP archive on InfinityFree, no auth/forms/uploads
-- [InfinityFree hardening](infinityfree_constraints.md) — host blocks php.ini changes, so ini_set must run in db.php
-- [Code quality baseline](code_quality_baseline.md) — codebase consistently uses h() and PDO prepared statements
-- [Output context rule](feedback_json_in_script.md) — json_encode inside inline script tags must use HEX flags
