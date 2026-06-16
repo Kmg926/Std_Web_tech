@@ -115,8 +115,11 @@
     transition: max-height var(--transition-slow);
   }
 
+  /* 메뉴 항목 7개 — 각 항목 약 50px. 충분한 여유 + 작은 화면에서
+     항목이 화면을 넘으면 스크롤되도록 viewport 기준 상한도 둔다. */
   .navbar__menu.open {
-    max-height: 360px;
+    max-height: min(480px, calc(100vh - 64px));
+    overflow-y: auto;
   }
 
   .navbar__menu li {

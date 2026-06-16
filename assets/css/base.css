@@ -125,6 +125,13 @@ textarea {
   }
 }
 
+/* 고정 navbar(64px) 아래 본문 겹침은 navbar.html 의 64px 스페이서가
+   처리한다(모든 페이지 공통). 여기서는 앵커 점프 시 제목이 navbar 에
+   가리지 않도록 scroll 여백만 보장한다. */
+html {
+  scroll-padding-top: calc(64px + var(--space-4));
+}
+
 .section {
   padding-block: var(--space-7);
 }

@@ -722,7 +722,15 @@
   gap: var(--space-7);
   max-width: 1440px;
   margin: 0 auto;
-  padding: var(--space-7) var(--space-5);
+  /* navbar 겹침은 navbar.html 의 64px 스페이서가 처리.
+     좌우 패딩만: 360px 기준 16px → 768px 이상 24px. */
+  padding: var(--space-7) var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .main-layout {
+    padding-inline: var(--space-5);
+  }
 }
 
 @media (min-width: 1200px) {
@@ -732,10 +740,17 @@
   }
 }
 
-/* Sidebar */
+/* Sidebar — sticky 는 2단 레이아웃(≥1200px)에서만 의미가 있다.
+   1단 적층 상태에서는 sticky 가 어색하므로 데스크톱에서만 활성화. */
 .sidebar {
-  position: sticky;
-  top: calc(64px + var(--space-4));  /* navbar 높이 + 여백 */
+  position: static;
+}
+
+@media (min-width: 1200px) {
+  .sidebar {
+    position: sticky;
+    top: calc(64px + var(--space-4));  /* navbar 높이 + 여백 */
+  }
 }
 
 .sidebar__intro {
@@ -897,7 +912,13 @@
 }
 
 .post__header {
-  padding: var(--space-4) var(--space-6) var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .post__header {
+    padding-inline: var(--space-6);
+  }
 }
 
 /* 제목 1줄 고정 영역 — 모든 카드의 제목을 한 줄로 통일해
@@ -960,7 +981,13 @@
 }
 
 .post__body {
-  padding: var(--space-3) var(--space-6) var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .post__body {
+    padding-inline: var(--space-6);
+  }
 }
 
 /* 감상평 2줄 고정 영역 — 제목과 동일하게 "칸 높이 고정"과
