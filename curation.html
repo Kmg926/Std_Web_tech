@@ -25,11 +25,12 @@
         <header class="page-header">
           <h1>큐레이션</h1>
           <span class="page-header__divider" aria-hidden="true"></span>
-          <p class="text-muted">무드와 테마로 고르는 오늘의 한 장.</p>
+          <p class="text-muted">무드와 테마로 고르는 오늘의 추천.</p>
+          <p class="curation-criterion" id="curationCriterion"></p>
         </header>
 
-        <!-- 큐레이션 그리드: curation.js 가 무드별 대표 카드를 렌더 -->
-        <div class="curation-grid" id="curationGrid"></div>
+        <!-- 큐레이션 섹션: curation.js 가 무드별로 그룹핑해 렌더 -->
+        <div id="curationGrid"></div>
 
         <!-- 빈 상태 -->
         <p class="empty-state" id="curationEmpty" hidden>아직 큐레이션할 음반이 없습니다.</p>

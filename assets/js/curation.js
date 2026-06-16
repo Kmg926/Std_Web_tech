@@ -1,11 +1,10 @@
 /* ============================================================
    SLEEVE — curation.js
-   curation.html 전용. "오늘의 한 장" 무드/테마 큐레이션.
+   curation.html 전용. 무드/테마 큐레이션.
    - albums.json 로드
-   - 각 앨범의 moods 배열로 그룹핑 (moods 없으면 genre 로 폴백)
-   - 무드별 대표 앨범 1장을 골라 큐레이션 카드 렌더 (최대 6개)
-   - 카드 클릭 → album.html?id=<id>
-   - 빈 데이터 시 empty-state 폴백
+   - moods[] 기준으로 그룹핑 (없으면 genre 폴백)
+   - 무드별 섹션(헤더 + 카드 그리드) 렌더
+   - 새로고침마다 그룹 순서 + 각 그룹 내 앨범 셔플
    ============================================================ */
 'use strict';
 
@@ -14,12 +13,14 @@
 
   const albums = await SLEEVE.loadAlbums();
 
-  const grid = document.getElementById('curationGrid');
+  const container = document.getElementById('curationGrid');
   const empty = document.getElementById('curationEmpty');
+  const criterion = document.getElementById('curationCriterion');
 
-  const MAX_CARDS = 6;
+  const MAX_GROUPS = 6;  // 표시할 최대 무드 그룹 수
+  const PER_GROUP  = 3;  // 그룹당 최대 앨범 수
 
-  /* Fisher-Yates 셔플 — 원본 배열 복사 후 무작위 순서 반환 */
+  /* Fisher-Yates 셔플 */
   function shuffle(arr) {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -29,70 +30,82 @@
     return a;
   }
 
-  /* --------------------------------------------------------
-     1. 무드 → 대표 앨범 매핑
-     앨범 배열을 먼저 셔플해 무드당 뽑히는 앨범이 매 로드마다 달라짐.
-     moods 가 비어있는 앨범은 genre 를 대체 레이블로 사용.
-     -------------------------------------------------------- */
-  function buildCuration(list) {
-    const moodMap = new Map(); // mood(label) → album
+  /* 무드 → 앨범[] 그룹 빌드
+     - moods[] 있으면 각 mood에 앨범 등록
+     - moods 없으면 genre를 대체 레이블로 사용
+     - 그룹 순서 셔플 + 각 그룹 내 앨범도 셔플 */
+  function buildMoodGroups(list) {
+    const moodMap = new Map();
 
-    shuffle(list).forEach((album) => {
+    list.forEach((album) => {
       const labels =
         Array.isArray(album.moods) && album.moods.length
           ? album.moods
-          : album.genre
-          ? [album.genre]
-          : [];
+          : album.genre ? [album.genre] : [];
 
       labels.forEach((label) => {
-        if (label == null || label === '') return;
-        if (!moodMap.has(label)) {
-          moodMap.set(label, album);
-        }
+        if (!label) return;
+        if (!moodMap.has(label)) moodMap.set(label, []);
+        moodMap.get(label).push(album);
       });
     });
 
-    // 최대 MAX_CARDS 개 — 순서도 셔플해 카드 배치 자체도 변화
-    return shuffle([...moodMap.entries()]).slice(0, MAX_CARDS);
+    return shuffle([...moodMap.entries()])
+      .slice(0, MAX_GROUPS)
+      .map(([mood, albms]) => ({
+        mood,
+        albums: shuffle(albms).slice(0, PER_GROUP),
+      }));
   }
 
-  /* --------------------------------------------------------
-     2. 렌더
-     -------------------------------------------------------- */
-  function render(entries) {
-    if (!grid) return;
+  /* 렌더 */
+  function render(groups) {
+    if (!container) return;
 
-    if (!entries.length) {
-      grid.innerHTML = '';
+    if (!groups.length) {
+      container.innerHTML = '';
       if (empty) empty.hidden = false;
       return;
     }
 
     if (empty) empty.hidden = true;
 
-    grid.innerHTML = entries
-      .map(([mood, album]) => {
-        const cover = album.cover_path || 'assets/img/ui/placeholder.svg';
-        return `
-      <a class="curation-card" href="album.html?id=${escapeHTML(album.id)}" aria-label="${escapeHTML(mood)} — ${escapeHTML(album.title)}, ${escapeHTML(album.artist)}">
-        <div class="card__cover">
-          <img data-src="${escapeHTML(cover)}" src="assets/img/ui/placeholder.svg" alt="${escapeHTML(album.title)} 자켓" loading="lazy">
-        </div>
-        <div class="curation-card__body">
-          <p class="curation-card__mood">${escapeHTML(mood)}</p>
-          <p class="curation-card__desc">${escapeHTML(album.title)} &mdash; ${escapeHTML(album.artist)}</p>
-        </div>
-      </a>`;
-      })
+    // 상단 기준 안내
+    if (criterion) {
+      criterion.textContent =
+        `기준: 무드 · ${groups.length}개 테마 · 새로고침마다 추천 앨범이 바뀝니다`;
+    }
+
+    container.innerHTML = groups
+      .map(
+        ({ mood, albums: albms }) => `
+        <section class="curation-section">
+          <h2 class="curation-section__label">${escapeHTML(mood)}</h2>
+          <div class="curation-section__grid">
+            ${albms
+              .map((album) => {
+                const cover = album.cover_path || 'assets/img/ui/placeholder.svg';
+                return `
+                <a class="curation-card" href="album.html?id=${escapeHTML(album.id)}"
+                   aria-label="${escapeHTML(mood)} — ${escapeHTML(album.title)}, ${escapeHTML(album.artist)}">
+                  <div class="card__cover">
+                    <img data-src="${escapeHTML(cover)}" src="assets/img/ui/placeholder.svg"
+                         alt="${escapeHTML(album.title)} 자켓" loading="lazy">
+                  </div>
+                  <div class="curation-card__body">
+                    <p class="curation-card__title">${escapeHTML(album.title)}</p>
+                    <p class="curation-card__artist">${escapeHTML(album.artist)}</p>
+                  </div>
+                </a>`;
+              })
+              .join('')}
+          </div>
+        </section>`
+      )
       .join('');
 
-    // 동적 삽입된 img[data-src] lazy load 재초기화
     if (typeof window.initLazyLoad === 'function') window.initLazyLoad();
   }
 
-  /* --------------------------------------------------------
-     초기화
-     -------------------------------------------------------- */
-  render(buildCuration(albums));
+  render(buildMoodGroups(albums));
 })();

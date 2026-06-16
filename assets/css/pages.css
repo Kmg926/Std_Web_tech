@@ -492,20 +492,40 @@
 }
 
 /* ============================ Curation ============================ */
-.curation-grid {
+.curation-criterion {
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.curation-section {
+  margin-bottom: var(--space-10);
+}
+
+.curation-section:last-child {
+  margin-bottom: 0;
+}
+
+.curation-section__label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(var(--line-rgb), 0.12);
+  margin-bottom: var(--space-5);
+}
+
+.curation-section__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
 @media (min-width: 768px) {
-  .curation-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .curation-grid {
+  .curation-section__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -527,22 +547,23 @@
 }
 
 .curation-card__body {
-  padding: var(--space-5);
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
-.curation-card__mood {
+.curation-card__title {
   font-family: var(--font-sub);
-  font-size: 1.25rem;
-  color: var(--amber);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--paper);
+  line-height: 1.3;
 }
 
-.curation-card__desc {
+.curation-card__artist {
   color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.82rem;
 }
 
 /* ============================ Album (album.js 출력 클래스) ============================ */
