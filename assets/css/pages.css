@@ -327,6 +327,58 @@
   transform: scale(1.05);
 }
 
+/* ============================ Virtual LP ============================
+   CSS+SVG로 만든 가상 LP. 갤러리/상세에서 이미지 슬롯을 대체한다. */
+.lp-wrapper {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.lp-svg {
+  width: 85%;
+  height: 85%;
+  transition: transform var(--transition-slow);
+  /* 정지 상태에서는 살짝 기울인 입체 뷰 */
+  transform: perspective(700px) rotateX(8deg) rotateY(-12deg);
+}
+
+.design-portfolio__item:hover .lp-svg {
+  animation: lp-spin 8s linear infinite;
+  transform: none;
+}
+
+@keyframes lp-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 상세 페이지의 대형 LP 히어로. lp-wrapper 도 함께 부여되므로
+   width/margin 만 덮어쓴다. */
+.lp-hero {
+  width: min(420px, 90%);
+  aspect-ratio: 1;
+  margin: 0 auto var(--space-8);
+  transform: perspective(900px) rotateX(6deg) rotateY(-10deg);
+}
+
+.lp-hero:hover .lp-svg {
+  animation: lp-spin 8s linear infinite;
+  transform: none;
+}
+
+/* 모션 민감 사용자: 회전 애니메이션은 끄되 입체 기울기는 유지 */
+@media (prefers-reduced-motion: reduce) {
+  .design-portfolio__item:hover .lp-svg,
+  .lp-hero:hover .lp-svg {
+    animation: none;
+  }
+}
+
 .design-portfolio__index {
   font-family: var(--font-display);
   font-size: 0.85rem;

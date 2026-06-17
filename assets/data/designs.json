@@ -1,5 +1,24 @@
 [
   {
+    "id": "yeezus-virtual-lp",
+    "title": "YEEZUS — Kanye West",
+    "tools": "",
+    "thumb_path": null,
+    "intent": "스트리밍으로만 존재하던 Yeezus가 실제 LP로 나온다면. 커버아트조차 없었던 앨범에 투명 바이닐과 미니멀 레드 레이블을 입혔다.",
+    "process": "Kanye West의 Yeezus(2013)는 CD에 테이프 한 장만 붙인 커버로 출시됐다. 투명(clear) 바이닐 한정반 포맷에 산업적 미니멀리즘을 담아 가상 LP 에디션을 디자인했다.",
+    "images": [],
+    "created_at": "2025-06-17",
+    "is_virtual_lp": true,
+    "lp_config": {
+      "vinyl_type": "clear",
+      "label_color": "#CC0000",
+      "label_color_text": "#FFFFFF",
+      "label_primary": "YEEZUS",
+      "label_secondary": "KANYE WEST",
+      "label_side": "Side A"
+    }
+  },
+  {
     "id": "midnight-static",
     "title": "Midnight Static",
     "tools": ["Photoshop", "Procreate", "Risograph"],

@@ -34,6 +34,7 @@
   <div id="footer-placeholder"></div>
 
   <script src="assets/js/components.js"></script>
+  <script src="assets/js/lp-renderer.js"></script>
   <script>
     (async () => {
       const designs = await SLEEVE.loadDesigns();
@@ -45,11 +46,13 @@
 
       grid.innerHTML = designs.map((d, i) => `
         <a class="design-portfolio__item" href="design.html?id=${e(d.id)}">
-          <div class="design-portfolio__image">
+          ${d.is_virtual_lp
+            ? `<div class="design-portfolio__image lp-wrapper">${SLEEVE.renderLP(d.lp_config)}</div>`
+            : `<div class="design-portfolio__image">
             <img data-src="${e(d.thumb_path)}" src="assets/img/ui/placeholder.svg"
                  alt="${e(d.title)} 디자인 썸네일" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/img/ui/placeholder.svg'">
-          </div>
+          </div>`}
           <div class="design-portfolio__body">
             <span class="design-portfolio__index">Design ${String(i + 1).padStart(2, '0')}</span>
             <h3 class="design-portfolio__title">${e(d.title)}</h3>
