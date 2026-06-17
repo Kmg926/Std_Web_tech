@@ -357,13 +357,16 @@
   to { transform: rotate(360deg); }
 }
 
-/* 상세 페이지의 대형 LP 히어로. lp-wrapper 도 함께 부여되므로
-   width/margin 만 덮어쓴다. */
+/* 상세 페이지의 대형 LP 히어로.
+   박스(wrapper)에 transform 을 걸면 검은 배경 사각형 자체가 기울어져 보이므로
+   배경·transform 은 제거하고 내부 .lp-svg 의 tilt 만 사용한다. */
 .lp-hero {
   width: min(420px, 90%);
   aspect-ratio: 1;
   margin: 0 auto var(--space-8);
-  transform: perspective(900px) rotateX(6deg) rotateY(-10deg);
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .lp-hero:hover .lp-svg {
